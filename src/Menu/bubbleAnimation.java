@@ -14,16 +14,20 @@ import javax.swing.Timer;
 
 public class bubbleAnimation extends JPanel implements ActionListener{
 	
+	// Background color for the panel
+	private static final Color BACKGROUND_COLOR = Color.WHITE;
 	//Timer t = new Timer(1000,this);
 
 
 	// indexes of each node.
-	int index1 = -150;	 
-	int index2 = -100;
-	int index3 = -50;
-	int index4 = 0;
-	int index5 = 50;
-	int index6 = 100;
+	// I think these should be constants to make it
+	// more easily understood that they won't change
+	private final int index1 = -150;	 
+	private final int index2 = -100;
+	private final int index3 = -50;
+	private final int index4 = 0;
+	private final int index5 = 50;
+	private final int index6 = 100;
 
 	int y = 0;
 	int w =50;
@@ -135,6 +139,7 @@ public class bubbleAnimation extends JPanel implements ActionListener{
 		frame.add(sort);
 		frame.setVisible(true);
 		frame.setSize(600,400);
+		frame.setBackground(BACKGROUND_COLOR);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
 	}
