@@ -1,74 +1,63 @@
 package Menu;
+import java.applet.Applet;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.geom.Line2D;
-import java.awt.geom.Rectangle2D;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.SwingWorker;
-import javax.swing.Timer;
-
-public class bubbleAnimation extends JPanel implements ActionListener{
+public class bubbleAnimation extends Applet implements Runnable{
 	
 	// Background color for the panel
-	private static final Color BACKGROUND_COLOR = Color.WHITE;
+	//private static final Color BACKGROUND_COLOR = Color.BLACK;
 	//Timer t = new Timer(1000,this);
+    
+	static int[] array = {5,6,7,2,1};
+	private static final int LENGTH = 5;
+	int d=0,m=0,z,t;
 
-
+	int i;
+	String num = new String();
 	// indexes of each node.
 	// I think these should be constants to make it
 	// more easily understood that they won't change
-	private final int index1 = -150;	 
-	private final int index2 = -100;
-	private final int index3 = -50;
-	private final int index4 = 0;
-	private final int index5 = 50;
-	private final int index6 = 100;
-
 	int y = 0;
 	int w =50;
 	int h = 50;
 	
 	int yString = 25;
 	
-	private SwingWorker<Void,Integer> worker;
+	//private SwingWorker<Void,Integer> worker;
 	
-	public bubbleAnimation(){			
-		
-		
-		
-		//Timer t = new Timer(1000,this);
-		Timer t = new Timer(1000,taskPerformer);
+	public void init()
+	{
+	
+	setSize(800,800);
+	setBackground(Color.white);
 
+	}
+	public void start(){
+		
+		Thread t = new Thread();
 		t.start();
-		repaint();
-	
+	}
+
+	public void run() {
+		// TODO Auto-generated method stub
+		
 	}
 	
+	//where all the magic happens.
 	
-	public void paintComponent(Graphics g){
+	public void paint(Graphics g){
 		
-		super.paintComponent(g);
 	    Graphics2D g2 = (Graphics2D) g;
 		
 		//change the origin to the center.
 		g2.translate(this.getWidth()/2, this.getHeight()/2);
 
-		//create the squares
-		Rectangle2D square0 = new Rectangle2D.Double(index1,y,w,h);
-		Rectangle2D square1 = new Rectangle2D.Double(index2,y,w,h);
-		Rectangle2D square2 = new Rectangle2D.Double(index3,y,w,h);
-		Rectangle2D square3 = new Rectangle2D.Double(index4,y,w,h);
-		Rectangle2D square4 = new Rectangle2D.Double(index5,y,w,h);
-		Rectangle2D square5 = new Rectangle2D.Double(index6,y,w,h);
+	
 		
 		
-		// compute a variable to deduce hiearchi
-		
+	/*	
 		int n6 = 125;
 	    g2.drawString("6", n6, yString);
 		int n5 = 75;
@@ -81,31 +70,199 @@ public class bubbleAnimation extends JPanel implements ActionListener{
 		g2.drawString("3", n2, yString);
 		int n1 = -125;
 		g2.drawString("5", n1, yString);
-		
-
-		//draw the squares
-		
-		g2.setColor(Color.darkGray);
-		g2.draw(square0);
-		g2.setColor(Color.BLUE);
-		g2.draw(square1);
-		g2.setColor(Color.CYAN);
-		g2.draw(square2);
-		g2.setColor(Color.YELLOW);
-		g2.draw(square3);
-		g2.setColor(Color.red);
-		g2.draw(square4);
-		g2.setColor(Color.GREEN);
-		g2.draw(square5);
+	*/
+		//this will render our nodes.
+		for(i=0; i<LENGTH; i++){
+			g.setColor(Color.white);
+			num = Integer.toString(array[i]);
+			g.drawRect(-150+i*50,0,30,30);
+			g.drawString(num,-138+i*50,20);	
+		}	
+		 try
+			{
+			Thread.sleep(3000);
+			}
+			catch(Exception e){}	
+		//bubble sort algorithm
+		 int j,temp=0;	
+		 for(i=0; i<LENGTH;i++)
+			for( j=i; j<LENGTH-1; j++)
+				if(array[i] > array[j+1]){
+			//the start of our animations since we start updating some variables.		
+					
+					int a=i,b=j+1,count;		
+					for( count =0; count<50;count++){
+					
+						//black background so lets wear white. this will draw a node on top of the one we have.
+					g.setColor(Color.white);
+					num = Integer.toString(array[a]);
+					g.drawRect(-150+a*50,0+count*4,30,30);
+					g.drawString(num,-138+a*50,20+count*4);
+					
+					 try
+						{
+						Thread.sleep(15);
+						}
+						catch(Exception e){}
+					// creates and moves our node down
+					g.setColor(Color.black);
+					num = Integer.toString(array[a]);
+					g.drawRect(-150+a*50,0+count*4,30,30);
+					g.drawString(num,-138+a*50,20+count*4);
+					}
+					//back to origin.
+					g.setColor(Color.white);
+					num = Integer.toString(array[a]);
+					g.drawRect(-150+a*50,0+count*4,30,30);
+					g.drawString(num,-138+a*50,20+count*4);
+					for(count=0;count<50;count++)
+					{
+					//moves down the other node 
+					g.setColor(Color.white);
+					num = Integer.toString(array[b]);
+					g.drawRect(-150+b*50,0+count*4,30,30);
+					g.drawString(num,-138+b*50,20+count*4);
+					
+					 try
+						{
+						Thread.sleep(10);
+						}
+						catch(Exception e){}
+					 
+					//these are not visible 
+					g.setColor(Color.black);
+					num = Integer.toString(array[b]);
+					g.drawRect(-150+b*50,0+count*4,30,30);
+					g.drawString(num,-138+b*50,20+count*4);
+					}
+					num = Integer.toString(array[b]);
+					g.drawRect(-150+b*50,0+count*4,30,30);
+					g.drawString(num,-138+b*50,20+count*4);
+					
+					//now time to mix the code
+					
+					for(int z=0;z<(b-a)*50;z++){
+						
+						g.setColor(Color.white);
+						//causes the bottom to swap
+						
+						num = Integer.toString(array[a]);
+						g.drawRect(-150+a*50+z,200,30,30);
+						g.drawString(num,-138+a*50+z,220);
+						
+						num = Integer.toString(array[a]);
+						g.drawRect(-150+b*50-z,200,30,30);
+						g.drawString(num,-138+b*50-z,220);
 			
-		//this will perform only one cycle.
-		//t.setRepeats(false);
+						 try
+							{
+							Thread.sleep(20);
+							}
+							catch(Exception e){}
+						
+						g.setColor(Color.black);
+						num = Integer.toString(array[a]);
+						g.drawRect(-150+a*50+z,200,30,30);
+						g.drawString(num,-138+b*50+z,220);
+					
+						num = Integer.toString(array[b]);
+						g.drawRect(-150+b*50-z,200,30,30);
+						g.drawString(num,-138+b*50-z,220);
+						}
+						g.setColor(Color.white);
+						num = Integer.toString(array[a]);
+						g.drawRect(-150+a*50+z,200,30,30);
+						g.drawString(num,-138+a*50+z,220);
+					
+						num = Integer.toString(array[b]);
+						g.drawRect(-150+b*50-z,200,30,30);
+						g.drawString(num,-138+b*50-z,220);
+						
+						for(int t=50; t>0;t--)
+						{
+							
+						g.setColor(Color.white);				
+						num = Integer.toString(array[b]);
+						g.drawRect(-150+a*50,0+t*4,30,30);
+						g.drawString(num,-138+a*50,20+t*4);
+							
+						try
+						{
+						Thread.sleep(10);
+						}
+						catch(Exception e)
+						{}
+						
+						g.setColor(Color.black);				
+						num = Integer.toString(array[b]);
+						g.drawRect(-150+a*50,320+t*4,30,30);
+						g.drawString(num,-138+a*50,20+t*4);
+						
+						}	
+						
+						g.setColor(Color.white);				
+						num = Integer.toString(array[b]);
+						g.drawRect(-150+a*50,0+t*4,30,30);
+						g.drawString(num,-138+a*50,20+t*4);
+					
+						for(t=50;t>0;t--)
+						{
+						g.setColor(Color.white);				
+						num = Integer.toString(array[a]);
+						g.drawRect(-150+b*50,0+t*4,30,30);
+						g.drawString(num,-138+b*50,20+t*4);
+						try
+						{
+						Thread.sleep(15);
+						}
+						catch(Exception e){}
+						
+						g.setColor(Color.black);				
+						num = Integer.toString(array[a]);
+						g.drawRect(-150+b*50,320+t*4,30,30);
+						g.drawString(num,-138+b*50,20+t*4);
+						}
+						
+						g.setColor(Color.white);				
+						num = Integer.toString(array[a]);
+						g.drawRect(-150+b*50,0+t*4,30,30);
+						g.drawString(num,-138+b*50,20+t*4);
+						temp = array[i];
+						array[i]= array[j+1];
+						array[j+1]= temp;
+						
 
-	}
-	
-	
-	ActionListener taskPerformer = new ActionListener() {
+						 try
+							{
+							Thread.sleep(20);
+							}
+							catch(Exception e){}
+			}
+		}
 		
+	
+	
+	
+	/*
+	public static void main(String[] args) {
+
+
+		
+		bubbleAnimation sort = new bubbleAnimation();
+		JFrame frame = new JFrame();
+		frame.add(sort);
+		frame.setVisible(true);
+		frame.setSize(600,400);
+		frame.setBackground(BACKGROUND_COLOR);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setLocationRelativeTo(null);
+	}
+
+*/
+
+
+	/*ActionListener taskPerformer = new ActionListener() {
+	
 	public void actionPerformed(ActionEvent e) {
 	
 		worker = new SwingWorker<Void, Integer>(){
@@ -129,26 +286,7 @@ public class bubbleAnimation extends JPanel implements ActionListener{
 		repaint();
 	}
 	};
-	
-	public static void main(String[] args) {
-
-
-		
-		bubbleAnimation sort = new bubbleAnimation();
-		JFrame frame = new JFrame();
-		frame.add(sort);
-		frame.setVisible(true);
-		frame.setSize(600,400);
-		frame.setBackground(BACKGROUND_COLOR);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setLocationRelativeTo(null);
-	}
-
-
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+	*/
 
 
 	
