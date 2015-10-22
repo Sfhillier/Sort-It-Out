@@ -3,11 +3,13 @@ import java.applet.Applet;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class bubbleAnimation extends Applet implements Runnable{
 	
 	// Background color for the panel
-	//private static final Color BACKGROUND_COLOR = Color.BLACK;
+	private static final Color BACKGROUND_COLOR = Color.black;
 	//Timer t = new Timer(1000,this);
     
 	static int[] array = {5,6,7,2,1};
@@ -31,7 +33,7 @@ public class bubbleAnimation extends Applet implements Runnable{
 	{
 	
 	setSize(800,800);
-	setBackground(Color.white);
+	setBackground(BACKGROUND_COLOR);
 
 	}
 	public void start(){
@@ -43,6 +45,7 @@ public class bubbleAnimation extends Applet implements Runnable{
 	public void run() {
 		// TODO Auto-generated method stub
 		
+		
 	}
 	
 	//where all the magic happens.
@@ -50,9 +53,9 @@ public class bubbleAnimation extends Applet implements Runnable{
 	public void paint(Graphics g){
 		
 	    Graphics2D g2 = (Graphics2D) g;
-		
-		//change the origin to the center.
-		g2.translate(this.getWidth()/2, this.getHeight()/2);
+	   // super.paintComponents(g);
+	    //change the origin to the center.
+		g.translate(this.getWidth()/2, this.getHeight()/2);
 
 	
 		
@@ -150,6 +153,8 @@ public class bubbleAnimation extends Applet implements Runnable{
 						g.drawRect(-150+a*50+z,200,30,30);
 						g.drawString(num,-138+a*50+z,220);
 						
+						g.setColor(Color.white);
+
 						num = Integer.toString(array[a]);
 						g.drawRect(-150+b*50-z,200,30,30);
 						g.drawString(num,-138+b*50-z,220);
@@ -165,6 +170,7 @@ public class bubbleAnimation extends Applet implements Runnable{
 						g.drawRect(-150+a*50+z,200,30,30);
 						g.drawString(num,-138+b*50+z,220);
 					
+						g.setColor(Color.black);
 						num = Integer.toString(array[b]);
 						g.drawRect(-150+b*50-z,200,30,30);
 						g.drawString(num,-138+b*50-z,220);
@@ -173,7 +179,8 @@ public class bubbleAnimation extends Applet implements Runnable{
 						num = Integer.toString(array[a]);
 						g.drawRect(-150+a*50+z,200,30,30);
 						g.drawString(num,-138+a*50+z,220);
-					
+
+						g.setColor(Color.white);
 						num = Integer.toString(array[b]);
 						g.drawRect(-150+b*50-z,200,30,30);
 						g.drawString(num,-138+b*50-z,220);
@@ -181,7 +188,7 @@ public class bubbleAnimation extends Applet implements Runnable{
 						for(int t=50; t>0;t--)
 						{
 							
-						g.setColor(Color.white);				
+						g.setColor(Color.black);				
 						num = Integer.toString(array[b]);
 						g.drawRect(-150+a*50,0+t*4,30,30);
 						g.drawString(num,-138+a*50,20+t*4);
@@ -207,7 +214,7 @@ public class bubbleAnimation extends Applet implements Runnable{
 					
 						for(t=50;t>0;t--)
 						{
-						g.setColor(Color.white);				
+						g.setColor(Color.black);				
 						num = Integer.toString(array[a]);
 						g.drawRect(-150+b*50,0+t*4,30,30);
 						g.drawString(num,-138+b*50,20+t*4);
@@ -232,14 +239,10 @@ public class bubbleAnimation extends Applet implements Runnable{
 						array[j+1]= temp;
 						
 
-						 try
-							{
-							Thread.sleep(20);
-							}
-							catch(Exception e){}
+						 
 			}
 		}
-		
+	
 	
 	
 	
@@ -258,7 +261,7 @@ public class bubbleAnimation extends Applet implements Runnable{
 		frame.setLocationRelativeTo(null);
 	}
 
-*/
+
 
 
 	/*ActionListener taskPerformer = new ActionListener() {
@@ -283,7 +286,7 @@ public class bubbleAnimation extends Applet implements Runnable{
 		
 			worker.execute();
 		
-		repaint();
+		
 	}
 	};
 	*/
