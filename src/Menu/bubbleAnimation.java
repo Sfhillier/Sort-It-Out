@@ -22,8 +22,8 @@ public class bubbleAnimation extends Applet implements Runnable{
 	// I think these should be constants to make it
 	// more easily understood that they won't change
 	int y = 0;
-	int w =50;
-	int h = 50;
+	int width =50;
+	int height = 50;
 	
 	int yString = 25;
 	
@@ -52,40 +52,24 @@ public class bubbleAnimation extends Applet implements Runnable{
 	
 	public void paint(Graphics g){
 		
-	    Graphics2D g2 = (Graphics2D) g;
 	   // super.paintComponents(g);
+	    
 	    //change the origin to the center.
 		g.translate(this.getWidth()/2, this.getHeight()/2);
 
-	
-		
-		
-	/*	
-		int n6 = 125;
-	    g2.drawString("6", n6, yString);
-		int n5 = 75;
-	    g2.drawString("1", n5, yString);
-		int n4 = 25;
-		g2.drawString("4", n4 , yString);
-		int n3 = -25;
-		g2.drawString("2", n3 , yString);
-		int n2 = -75;
-		g2.drawString("3", n2, yString);
-		int n1 = -125;
-		g2.drawString("5", n1, yString);
-	*/
 		//this will render our nodes.
 		for(i=0; i<LENGTH; i++){
 			g.setColor(Color.white);
 			num = Integer.toString(array[i]);
-			g.drawRect(-150+i*50,0,30,30);
-			g.drawString(num,-138+i*50,20);	
+			g.drawRect(-150+i*50, 0 , 30 , 30);
+			g.drawString(num,-138 + i*50 , 20);	
 		}	
 		 try
 			{
 			Thread.sleep(3000);
 			}
 			catch(Exception e){}	
+		 
 		//bubble sort algorithm
 		 int j,temp=0;	
 		 for(i=0; i<LENGTH;i++)
@@ -110,8 +94,8 @@ public class bubbleAnimation extends Applet implements Runnable{
 					// creates and moves our node down
 					g.setColor(Color.black);
 					num = Integer.toString(array[a]);
-					g.drawRect(-150+a*50,0+count*4,30,30);
-					g.drawString(num,-138+a*50,20+count*4);
+					g.drawRect(-150 + a*50, 0 + count*4 , 30, 30);
+					g.drawString(num, -138 + a*50, 20 + count*4);
 					}
 					//back to origin.
 					g.setColor(Color.white);
