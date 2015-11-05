@@ -19,7 +19,9 @@ import java.awt.Graphics;
   public class BSAnimationGUI extends javax.swing.JFrame {
  
 	  
-	// Background color for the panel
+	private static final int RECTANGLE_SIDE = 30;
+
+		// Background color for the panel
 		private static final Color BACKGROUND_COLOR = Color.black;
 		//Timer t = new Timer(1000,this);
 	    
@@ -54,7 +56,7 @@ import java.awt.Graphics;
 			for(i=0; i<LENGTH; i++){
 				g.setColor(Color.white);
 				num = Integer.toString(array[i]);
-				g.drawRect(-150+i*50, 0 , 30 , 30);
+				g.drawRect(-150+i*50, 0 , RECTANGLE_SIDE , RECTANGLE_SIDE);
 				g.drawString(num,-138 + i*50 , 20);	
 			}	
 			 try
@@ -76,7 +78,7 @@ import java.awt.Graphics;
 							//black background so lets wear white. this will draw a node on top of the one we have.
 						g.setColor(Color.white);
 						num = Integer.toString(array[a]);
-						g.drawRect(-150+a*50,0+count*4,30,30);
+						g.drawRect(-150+a*50,0+count*4,RECTANGLE_SIDE,RECTANGLE_SIDE);
 						g.drawString(num,-138+a*50,20+count*4);
 						
 						 try
@@ -87,20 +89,20 @@ import java.awt.Graphics;
 						// creates and moves our node down
 						g.setColor(Color.black);
 						num = Integer.toString(array[a]);
-						g.drawRect(-150 + a*50, 0 + count*4 , 30, 30);
+						g.drawRect(-150 + a*50, 0 + count*4 , RECTANGLE_SIDE, RECTANGLE_SIDE);
 						g.drawString(num, -138 + a*50, 20 + count*4);
 						}
 						//back to origin.
 						g.setColor(Color.white);
 						num = Integer.toString(array[a]);
-						g.drawRect(-150+a*50,0+count*4,30,30);
+						g.drawRect(-150+a*50,0+count*4,RECTANGLE_SIDE,RECTANGLE_SIDE);
 						g.drawString(num,-138+a*50,20+count*4);
 						for(count=0;count<50;count++)
 						{
 						//moves down the other node 
 						g.setColor(Color.white);
 						num = Integer.toString(array[b]);
-						g.drawRect(-150+b*50,0+count*4,30,30);
+						g.drawRect(-150+b*50,0+count*4,RECTANGLE_SIDE,RECTANGLE_SIDE);
 						g.drawString(num,-138+b*50,20+count*4);
 						
 						 try
@@ -112,11 +114,11 @@ import java.awt.Graphics;
 						//these are not visible 
 						g.setColor(Color.black);
 						num = Integer.toString(array[b]);
-						g.drawRect(-150+b*50,0+count*4,30,30);
+						g.drawRect(-150+b*50,0+count*4,RECTANGLE_SIDE,RECTANGLE_SIDE);
 						g.drawString(num,-138+b*50,20+count*4);
 						}
 						num = Integer.toString(array[b]);
-						g.drawRect(-150+b*50,0+count*4,30,30);
+						g.drawRect(-150+b*50,0+count*4,RECTANGLE_SIDE,RECTANGLE_SIDE);
 						g.drawString(num,-138+b*50,20+count*4);
 						
 						//now time to mix the code
@@ -127,13 +129,13 @@ import java.awt.Graphics;
 							//causes the bottom to swap
 							
 							num = Integer.toString(array[a]);
-							g.drawRect(-150+a*50+z,200,30,30);
+							g.drawRect(-150+a*50+z,200,RECTANGLE_SIDE,RECTANGLE_SIDE);
 							g.drawString(num,-138+a*50+z,220);
 							
 							g.setColor(Color.white);
 
 							num = Integer.toString(array[a]);
-							g.drawRect(-150+b*50-z,200,30,30);
+							g.drawRect(-150+b*50-z,200,RECTANGLE_SIDE,RECTANGLE_SIDE);
 							g.drawString(num,-138+b*50-z,220);
 				
 							 try
@@ -144,22 +146,22 @@ import java.awt.Graphics;
 							
 							g.setColor(Color.black);
 							num = Integer.toString(array[a]);
-							g.drawRect(-150+a*50+z,200,30,30);
+							g.drawRect(-150+a*50+z,200,RECTANGLE_SIDE,RECTANGLE_SIDE);
 							g.drawString(num,-138+b*50+z,220);
 						
 							g.setColor(Color.black);
 							num = Integer.toString(array[b]);
-							g.drawRect(-150+b*50-z,200,30,30);
+							g.drawRect(-150+b*50-z,200,RECTANGLE_SIDE,RECTANGLE_SIDE);
 							g.drawString(num,-138+b*50-z,220);
 							}
 							g.setColor(Color.white);
 							num = Integer.toString(array[a]);
-							g.drawRect(-150+a*50+z,200,30,30);
+							g.drawRect(-150+a*50+z,200,RECTANGLE_SIDE,RECTANGLE_SIDE);
 							g.drawString(num,-138+a*50+z,220);
 
 							g.setColor(Color.white);
 							num = Integer.toString(array[b]);
-							g.drawRect(-150+b*50-z,200,30,30);
+							g.drawRect(-150+b*50-z,200,RECTANGLE_SIDE,RECTANGLE_SIDE);
 							g.drawString(num,-138+b*50-z,220);
 							
 							for(int t=50; t>0;t--)
@@ -167,7 +169,7 @@ import java.awt.Graphics;
 								
 							g.setColor(Color.black);				
 							num = Integer.toString(array[b]);
-							g.drawRect(-150+a*50,0+t*4,30,30);
+							g.drawRect(-150+a*50,0+t*4,RECTANGLE_SIDE,RECTANGLE_SIDE);
 							g.drawString(num,-138+a*50,20+t*4);
 								
 							try
@@ -179,21 +181,21 @@ import java.awt.Graphics;
 							
 							g.setColor(Color.black);				
 							num = Integer.toString(array[b]);
-							g.drawRect(-150+a*50,320+t*4,30,30);
+							g.drawRect(-150+a*50,320+t*4,RECTANGLE_SIDE,RECTANGLE_SIDE);
 							g.drawString(num,-138+a*50,20+t*4);
 							
 							}	
 							
 							g.setColor(Color.white);				
 							num = Integer.toString(array[b]);
-							g.drawRect(-150+a*50,0+t*4,30,30);
+							g.drawRect(-150+a*50,0+t*4,RECTANGLE_SIDE,RECTANGLE_SIDE);
 							g.drawString(num,-138+a*50,20+t*4);
 						
 							for(t=50;t>0;t--)
 							{
 							g.setColor(Color.black);				
 							num = Integer.toString(array[a]);
-							g.drawRect(-150+b*50,0+t*4,30,30);
+							g.drawRect(-150+b*50,0+t*4,RECTANGLE_SIDE,RECTANGLE_SIDE);
 							g.drawString(num,-138+b*50,20+t*4);
 							try
 							{
@@ -203,13 +205,13 @@ import java.awt.Graphics;
 							
 							g.setColor(Color.black);				
 							num = Integer.toString(array[a]);
-							g.drawRect(-150+b*50,320+t*4,30,30);
+							g.drawRect(-150+b*50,320+t*4,RECTANGLE_SIDE,RECTANGLE_SIDE);
 							g.drawString(num,-138+b*50,20+t*4);
 							}
 							
 							g.setColor(Color.white);				
 							num = Integer.toString(array[a]);
-							g.drawRect(-150+b*50,0+t*4,30,30);
+							g.drawRect(-150+b*50,0+t*4,RECTANGLE_SIDE,RECTANGLE_SIDE);
 							g.drawString(num,-138+b*50,20+t*4);
 							temp = array[i];
 							array[i]= array[j+1];
