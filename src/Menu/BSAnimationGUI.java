@@ -45,11 +45,6 @@ public class BSAnimationGUI extends javax.swing.JFrame {
 	// of code that we will be printing on the screen
 	public String[] codeToPrint = new String[8];
 
-	// Values for the initial x and y locations
-	// for the lines of code we will be displaying
-	public int xForCodeText = this.getWidth()-(this.getWidth()/6);
-	public int yForCodeText = this.getHeight()-(this.getHeight()/6);
-
 	String num = new String();
 	// indexes of each node.
 	// I think these should be constants to make it
@@ -87,6 +82,11 @@ public class BSAnimationGUI extends javax.swing.JFrame {
 		// during the animation'
 		// It will add ten to each y value so that they get further and further down the
 		// screen as the code is printed
+		// Values for the initial x and y locations
+		// for the lines of code we will be displaying
+		int xForCodeText = 100;
+		int yForCodeText = -150;
+
 		g.setColor(Color.white);
 		for(int i=0;i<numLinesOfCode;i++){
 			g.drawString(codeToPrint[i], xForCodeText, yForCodeText+(i*12));
