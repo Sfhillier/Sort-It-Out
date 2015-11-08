@@ -16,6 +16,10 @@ import java.awt.Graphics;
 
 
 
+/**
+ * @author Scott
+ *
+ */
 public class BSAnimationGUI extends javax.swing.JFrame {
 
 	// Constant declaration for the sides of the 'rectangle'
@@ -31,6 +35,21 @@ public class BSAnimationGUI extends javax.swing.JFrame {
 	int d=0,m=0,z,t;
 
 	int i;
+
+
+	// Integer value for the number of lines of code
+	// we are printing on the screen to display the bubble sort
+	public int numLinesOfCode = 8;
+	
+	// Array of Strings to hold the individual lines
+	// of code that we will be printing on the screen
+	public String[] codeToPrint = new String[8];
+
+	// Values for the initial x and y locations
+	// for the lines of code we will be displaying
+	public int xForCodeText = this.getWidth()-(this.getWidth()/6);
+	public int yForCodeText = this.getHeight()-(this.getHeight()/6);
+
 	String num = new String();
 	// indexes of each node.
 	// I think these should be constants to make it
@@ -48,11 +67,30 @@ public class BSAnimationGUI extends javax.swing.JFrame {
 	}
 	public void paint(Graphics g){
 
+		// Adds each individual line of code to the array
+		codeToPrint[0] = "for(int i=0; i < array.length-1; i++){";
+		codeToPrint[1] = "   for(int j=1; j < array.length-i; j++){";
+		codeToPrint[2] = "      if(array[j-1] > array[j]){";
+		codeToPrint[3] = "      for(int j=1; j < array.length-i; j++){";
+		codeToPrint[4] = "         temp = array[j-i]){";
+		codeToPrint[5] = "         array[j-i];";
+		codeToPrint[6] = "         array[j] = temp;";
+		codeToPrint[7] = "   }";
+
+
 		// super.paintComponents(g);
 
 		//change the origin to the center.
 		g.translate(this.getWidth()/2, this.getHeight()/2);
 
+		// Code to render the text on the screen to be highlighted
+		// during the animation'
+		// It will add ten to each y value so that they get further and further down the
+		// screen as the code is printed
+		g.setColor(Color.white);
+		for(int i=0;i<numLinesOfCode;i++){
+			g.drawString(codeToPrint[i], xForCodeText, yForCodeText+(i*12));
+		}
 		//this will render our nodes.
 		for(i=0; i<LENGTH; i++){
 			g.setColor(Color.white);
