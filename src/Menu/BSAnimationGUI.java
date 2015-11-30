@@ -8,18 +8,13 @@ package Menu;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 /**
  *
- * @author giannamaida
+ * @author Team 2
  */
 
-
-
-/**
- * @author Scott
- *
- */
 public class BSAnimationGUI extends javax.swing.JFrame {
 
 	// Constant declaration for the sides of the 'rectangle'
@@ -35,7 +30,6 @@ public class BSAnimationGUI extends javax.swing.JFrame {
 	int d=0,m=0,z,t;
 
 	int i;
-
 
 	// Integer value for the number of lines of code
 	// we are printing on the screen to display the bubble sort
@@ -61,7 +55,9 @@ public class BSAnimationGUI extends javax.swing.JFrame {
 		t.start();
 	}
 	public void paint(Graphics g){
-
+		super.paintComponents(g);
+		Graphics2D g2 = (Graphics2D)g;
+		
 		// Adds each individual line of code to the array
 		codeToPrint[0] = "for(int i=0; i < array.length-1; i++){";
 		codeToPrint[1] = "   for(int j=1; j < array.length-i; j++){";
@@ -76,7 +72,7 @@ public class BSAnimationGUI extends javax.swing.JFrame {
 		// super.paintComponents(g);
 
 		//change the origin to the center.
-		g.translate(this.getWidth()/2, this.getHeight()/2);
+		g2.translate(this.getWidth()/2, this.getHeight()/2);
 
 		// Code to render the text on the screen to be highlighted
 		// during the animation'
@@ -87,16 +83,16 @@ public class BSAnimationGUI extends javax.swing.JFrame {
 		int xForCodeText = 100;
 		int yForCodeText = -150;
 
-		g.setColor(Color.white);
+		g2.setColor(Color.white);
 		for(int i=0;i<numLinesOfCode;i++){
-			g.drawString(codeToPrint[i], xForCodeText, yForCodeText+(i*12));
+			g2.drawString(codeToPrint[i], xForCodeText, yForCodeText+(i*12));
 		}
 		//this will render our nodes.
 		for(i=0; i<LENGTH; i++){
-			g.setColor(Color.white);
+			g2.setColor(Color.white);
 			num = Integer.toString(array[i]);
-			g.drawRect(-150+i*50, 0 , RECTANGLE_SIDE , RECTANGLE_SIDE);
-			g.drawString(num,-138 + i*50 , 20);	
+			g2.drawRect(-150+i*50, 0 , RECTANGLE_SIDE , RECTANGLE_SIDE);
+			g2.drawString(num,-138 + i*50 , 20);	
 		}	
 		try
 		{
@@ -115,10 +111,10 @@ public class BSAnimationGUI extends javax.swing.JFrame {
 					for( count =0; count<50;count++){
 
 						//black background so lets wear white. this will draw a node on top of the one we have.
-						g.setColor(Color.white);
+						g2.setColor(Color.white);
 						num = Integer.toString(array[a]);
-						g.drawRect(-150+a*50,0+count*4,RECTANGLE_SIDE,RECTANGLE_SIDE);
-						g.drawString(num,-138+a*50,20+count*4);
+						g2.drawRect(-150+a*50,0+count*4,RECTANGLE_SIDE,RECTANGLE_SIDE);
+						g2.drawString(num,-138+a*50,20+count*4);
 
 						try
 						{
@@ -126,23 +122,28 @@ public class BSAnimationGUI extends javax.swing.JFrame {
 						}
 						catch(Exception e){}
 						// creates and moves our node down
-						g.setColor(Color.black);
+						g2.setColor(Color.black);
 						num = Integer.toString(array[a]);
-						g.drawRect(-150 + a*50, 0 + count*4 , RECTANGLE_SIDE, RECTANGLE_SIDE);
-						g.drawString(num, -138 + a*50, 20 + count*4);
+						g2.drawRect(-150 + a*50, 0 + count*4 , RECTANGLE_SIDE, RECTANGLE_SIDE);
+						g2.drawString(num, -138 + a*50, 20 + count*4);
+						// Coloring the code, not yet working, but starting to 
+						// work on this part
+						g2.setColor(Color.red);
+						g2.drawString(codeToPrint[2], xForCodeText, yForCodeText+(i*12));
+						g2.setColor(Color.white);
 					}
 					//back to origin.
-					g.setColor(Color.white);
+					g2.setColor(Color.white);
 					num = Integer.toString(array[a]);
-					g.drawRect(-150+a*50,0+count*4,RECTANGLE_SIDE,RECTANGLE_SIDE);
-					g.drawString(num,-138+a*50,20+count*4);
+					g2.drawRect(-150+a*50,0+count*4,RECTANGLE_SIDE,RECTANGLE_SIDE);
+					g2.drawString(num,-138+a*50,20+count*4);
 					for(count=0;count<50;count++)
 					{
 						//moves down the other node 
-						g.setColor(Color.white);
+						g2.setColor(Color.white);
 						num = Integer.toString(array[b]);
-						g.drawRect(-150+b*50,0+count*4,RECTANGLE_SIDE,RECTANGLE_SIDE);
-						g.drawString(num,-138+b*50,20+count*4);
+						g2.drawRect(-150+b*50,0+count*4,RECTANGLE_SIDE,RECTANGLE_SIDE);
+						g2.drawString(num,-138+b*50,20+count*4);
 
 						try
 						{
@@ -151,31 +152,31 @@ public class BSAnimationGUI extends javax.swing.JFrame {
 						catch(Exception e){}
 
 						//these are not visible 
-						g.setColor(Color.black);
+						g2.setColor(Color.black);
 						num = Integer.toString(array[b]);
-						g.drawRect(-150+b*50,0+count*4,RECTANGLE_SIDE,RECTANGLE_SIDE);
-						g.drawString(num,-138+b*50,20+count*4);
+						g2.drawRect(-150+b*50,0+count*4,RECTANGLE_SIDE,RECTANGLE_SIDE);
+						g2.drawString(num,-138+b*50,20+count*4);
 					}
 					num = Integer.toString(array[b]);
-					g.drawRect(-150+b*50,0+count*4,RECTANGLE_SIDE,RECTANGLE_SIDE);
-					g.drawString(num,-138+b*50,20+count*4);
+					g2.drawRect(-150+b*50,0+count*4,RECTANGLE_SIDE,RECTANGLE_SIDE);
+					g2.drawString(num,-138+b*50,20+count*4);
 
 					//now time to mix the code
 
 					for(int z=0;z<(b-a)*50;z++){
 
-						g.setColor(Color.white);
+						g2.setColor(Color.white);
 						//causes the bottom to swap
 
 						num = Integer.toString(array[a]);
-						g.drawRect(-150+a*50+z,200,RECTANGLE_SIDE,RECTANGLE_SIDE);
-						g.drawString(num,-138+a*50+z,220);
+						g2.drawRect(-150+a*50+z,200,RECTANGLE_SIDE,RECTANGLE_SIDE);
+						g2.drawString(num,-138+a*50+z,220);
 
-						g.setColor(Color.white);
+						g2.setColor(Color.white);
 
 						num = Integer.toString(array[a]);
-						g.drawRect(-150+b*50-z,200,RECTANGLE_SIDE,RECTANGLE_SIDE);
-						g.drawString(num,-138+b*50-z,220);
+						g2.drawRect(-150+b*50-z,200,RECTANGLE_SIDE,RECTANGLE_SIDE);
+						g2.drawString(num,-138+b*50-z,220);
 
 						try
 						{
@@ -183,33 +184,33 @@ public class BSAnimationGUI extends javax.swing.JFrame {
 						}
 						catch(Exception e){}
 
-						g.setColor(Color.black);
+						g2.setColor(Color.black);
 						num = Integer.toString(array[a]);
-						g.drawRect(-150+a*50+z,200,RECTANGLE_SIDE,RECTANGLE_SIDE);
-						g.drawString(num,-138+b*50+z,220);
+						g2.drawRect(-150+a*50+z,200,RECTANGLE_SIDE,RECTANGLE_SIDE);
+						g2.drawString(num,-138+b*50+z,220);
 
-						g.setColor(Color.black);
+						g2.setColor(Color.black);
 						num = Integer.toString(array[b]);
-						g.drawRect(-150+b*50-z,200,RECTANGLE_SIDE,RECTANGLE_SIDE);
-						g.drawString(num,-138+b*50-z,220);
+						g2.drawRect(-150+b*50-z,200,RECTANGLE_SIDE,RECTANGLE_SIDE);
+						g2.drawString(num,-138+b*50-z,220);
 					}
-					g.setColor(Color.white);
+					g2.setColor(Color.white);
 					num = Integer.toString(array[a]);
-					g.drawRect(-150+a*50+z,200,RECTANGLE_SIDE,RECTANGLE_SIDE);
-					g.drawString(num,-138+a*50+z,220);
+					g2.drawRect(-150+a*50+z,200,RECTANGLE_SIDE,RECTANGLE_SIDE);
+					g2.drawString(num,-138+a*50+z,220);
 
-					g.setColor(Color.white);
+					g2.setColor(Color.white);
 					num = Integer.toString(array[b]);
-					g.drawRect(-150+b*50-z,200,RECTANGLE_SIDE,RECTANGLE_SIDE);
-					g.drawString(num,-138+b*50-z,220);
+					g2.drawRect(-150+b*50-z,200,RECTANGLE_SIDE,RECTANGLE_SIDE);
+					g2.drawString(num,-138+b*50-z,220);
 
 					for(int t=50; t>0;t--)
 					{
 
-						g.setColor(Color.black);				
+						g2.setColor(Color.black);				
 						num = Integer.toString(array[b]);
-						g.drawRect(-150+a*50,0+t*4,RECTANGLE_SIDE,RECTANGLE_SIDE);
-						g.drawString(num,-138+a*50,20+t*4);
+						g2.drawRect(-150+a*50,0+t*4,RECTANGLE_SIDE,RECTANGLE_SIDE);
+						g2.drawString(num,-138+a*50,20+t*4);
 
 						try
 						{
@@ -218,40 +219,40 @@ public class BSAnimationGUI extends javax.swing.JFrame {
 						catch(Exception e)
 						{}
 
-						g.setColor(Color.black);				
+						g2.setColor(Color.black);				
 						num = Integer.toString(array[b]);
-						g.drawRect(-150+a*50,320+t*4,RECTANGLE_SIDE,RECTANGLE_SIDE);
-						g.drawString(num,-138+a*50,20+t*4);
+						g2.drawRect(-150+a*50,320+t*4,RECTANGLE_SIDE,RECTANGLE_SIDE);
+						g2.drawString(num,-138+a*50,20+t*4);
 
 					}	
 
-					g.setColor(Color.white);				
+					g2.setColor(Color.white);				
 					num = Integer.toString(array[b]);
-					g.drawRect(-150+a*50,0+t*4,RECTANGLE_SIDE,RECTANGLE_SIDE);
-					g.drawString(num,-138+a*50,20+t*4);
+					g2.drawRect(-150+a*50,0+t*4,RECTANGLE_SIDE,RECTANGLE_SIDE);
+					g2.drawString(num,-138+a*50,20+t*4);
 
 					for(t=50;t>0;t--)
 					{
-						g.setColor(Color.black);				
+						g2.setColor(Color.black);				
 						num = Integer.toString(array[a]);
-						g.drawRect(-150+b*50,0+t*4,RECTANGLE_SIDE,RECTANGLE_SIDE);
-						g.drawString(num,-138+b*50,20+t*4);
+						g2.drawRect(-150+b*50,0+t*4,RECTANGLE_SIDE,RECTANGLE_SIDE);
+						g2.drawString(num,-138+b*50,20+t*4);
 						try
 						{
 							Thread.sleep(15);
 						}
 						catch(Exception e){}
 
-						g.setColor(Color.black);				
+						g2.setColor(Color.black);				
 						num = Integer.toString(array[a]);
-						g.drawRect(-150+b*50,320+t*4,RECTANGLE_SIDE,RECTANGLE_SIDE);
-						g.drawString(num,-138+b*50,20+t*4);
+						g2.drawRect(-150+b*50,320+t*4,RECTANGLE_SIDE,RECTANGLE_SIDE);
+						g2.drawString(num,-138+b*50,20+t*4);
 					}
 
-					g.setColor(Color.white);				
+					g2.setColor(Color.white);				
 					num = Integer.toString(array[a]);
-					g.drawRect(-150+b*50,0+t*4,RECTANGLE_SIDE,RECTANGLE_SIDE);
-					g.drawString(num,-138+b*50,20+t*4);
+					g2.drawRect(-150+b*50,0+t*4,RECTANGLE_SIDE,RECTANGLE_SIDE);
+					g2.drawString(num,-138+b*50,20+t*4);
 					swap(j);
 
 
