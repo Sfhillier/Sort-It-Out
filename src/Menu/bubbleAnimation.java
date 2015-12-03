@@ -26,7 +26,15 @@ public class bubbleAnimation extends JPanel {
     Timer t3 = new Timer();
     Timer t4 = new Timer();
 
- 
+
+    String[] instructions = {"Bubble Sort Algorithm:",
+    						
+    						"Compare the first two elements, since 5 > 1, then swap 5", //1
+    						"Then compare 5 and 4, and swap",//2
+    						"The process is repeated until the focus moves to the end of the array",//3
+    						"Keep doing this, while stopping at one earlier place each pass",
+    						"because the largest element is considered sorted at this time."};//4
+    
     int x=150;
     int x1=150;
     int x2=150;
@@ -45,8 +53,11 @@ public class bubbleAnimation extends JPanel {
     boolean sortedNode2;
     boolean sortedNode1;
     boolean sortedNode;
-
-
+    
+    boolean printText = false;
+    boolean printText1 = false;
+    boolean printText2 = false;
+    boolean printText3 = false;
 
     int timeInterval = 5;
     
@@ -75,12 +86,9 @@ public class bubbleAnimation extends JPanel {
     	t4.scheduleAtFixedRate(sorted2, delay*25, timeInterval);
     	t4.scheduleAtFixedRate(sorted3, delay*26, timeInterval);
 
-
-    	
     }
  
  
-
 	public void paintComponent(Graphics g){
 		
 		super.paintComponent(g);
@@ -117,6 +125,36 @@ public class bubbleAnimation extends JPanel {
 		g2.drawString("2", x3+67, y3+35);
 		g2.drawString("8", x4+117, y4+35);
 		
+		g2.drawString(instructions[0], 300, 200);
+		
+		
+		Font font2 = new Font("Serif", Font.PLAIN, 18);
+		g2.setFont(font2);
+		
+		
+		if(printText){
+			
+			g2.drawString(instructions[1], 300, 230);
+		}
+		
+		if(printText1){
+			
+			g2.drawString(instructions[2], 300, 260);
+		}
+		
+		if(printText2){
+			
+			g2.drawString(instructions[3], 300, 290);
+		}
+		
+		if(printText3){
+			
+			g2.drawString(instructions[4], 300, 320);
+			g2.drawString(instructions[5], 300, 350);
+		}
+		
+	
+		
 		
 		
 		
@@ -142,17 +180,17 @@ public class bubbleAnimation extends JPanel {
 			
 			g2.setColor(Color.red);
 			g2.fill(ellipse1);
+			
 			}
 		if(sortedNode==true){
 			
 			g2.setColor(Color.red);
 			g2.fill(ellipse);
 			
+			
 			}
 			
-			
 		
-	    
 	    repaint();
 	    
 	    
@@ -161,9 +199,12 @@ public class bubbleAnimation extends JPanel {
 	/*******************************
 	 * start of first swap
 	 */
+
 	
 	TimerTask down = new TimerTask(){
+		
 		public void run(){
+			printText = true;	
 			
 			y=y+1;
 			y1=y1+1;
@@ -193,6 +234,7 @@ public class bubbleAnimation extends JPanel {
 
 		public void run(){
 			
+			
 			y = y-2;
 			y1 = y1-2;
 			if(y<100){
@@ -215,6 +257,7 @@ public class bubbleAnimation extends JPanel {
 	
 	TimerTask down1 = new TimerTask(){
 		public void run(){
+			printText1 = true;
 			
 			y=y+1;
 			y2=y2+1;
@@ -265,6 +308,7 @@ public class bubbleAnimation extends JPanel {
 	
 	TimerTask down2 = new TimerTask(){
 		public void run(){
+			printText2 = true;
 			
 			y=y+1;
 			y3=y3+1;
@@ -283,7 +327,7 @@ public class bubbleAnimation extends JPanel {
 			
 			x = x+1;
 			x3 = x3-1;
-			if(x3==100){
+			if(x3==98){
 				x = x-1;
 				x3 = x3+1;	
 			}
@@ -317,6 +361,7 @@ public class bubbleAnimation extends JPanel {
 	
 	TimerTask down3 = new TimerTask(){
 		public void run(){
+			printText3 = true;
 			
 			y2=y2+1;
 			y3=y3+1;
@@ -365,7 +410,7 @@ public class bubbleAnimation extends JPanel {
 	 */
 	
 	/*******************************
-	 * no more swaps.
+	 * start of fourth swap
 	 */
 	
 	TimerTask sorted1 = new TimerTask(){
@@ -399,7 +444,7 @@ public class bubbleAnimation extends JPanel {
 	
 	
 	/*******************************
-	 * end of more swaps
+	 * end of fourth  swap
 	 */
 	
     
@@ -412,7 +457,7 @@ public class bubbleAnimation extends JPanel {
 		JFrame f = new JFrame();
 		f.add(s);
 		f.setVisible(true);
-		f.setSize(450,600);
+		f.setSize(900,600);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setLocationRelativeTo(null);
 	}
