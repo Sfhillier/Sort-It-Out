@@ -7,6 +7,21 @@
 package Menu;
 
 import java.awt.Color;
+import java.awt.AlphaComposite;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Shape;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.geom.Ellipse2D;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+//import javax.swing.*;
+import java.util.*;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
@@ -16,7 +31,10 @@ import java.awt.Graphics2D;
  */
 
 public class BSAnimationGUI extends javax.swing.JFrame {
+	
+	
 
+	
 	// Constant declaration for the sides of the 'rectangle'
 	private static final int RECTANGLE_SIDE = 30;
 
@@ -54,6 +72,7 @@ public class BSAnimationGUI extends javax.swing.JFrame {
 		Thread t = new Thread();
 		t.start();
 	}
+	
 	public void paint(Graphics g){
 		super.paintComponents(g);
 		Graphics2D g2 = (Graphics2D)g;
@@ -259,22 +278,21 @@ public class BSAnimationGUI extends javax.swing.JFrame {
 
 				}
 	}
-	/**
-	 * @param j
-	 */
+	
 	private void swap(int j) {
 		int temp;
 		temp = array[i];
 		array[i]= array[j+1];
 		array[j+1]= temp;
 	}
-
+		
 
 	/**
 	 * Creates new form BSAnimationGUI
 	 */
 	public BSAnimationGUI() {
-		initComponents();
+		bubbleAnimation s = new bubbleAnimation();
+		bubbleAnimation.main(codeToPrint);
 	}
 
 	/**

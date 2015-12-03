@@ -367,7 +367,7 @@ public class bubbleAnimation extends JPanel {
 	 */
 	
 	/*******************************
-	 * start of fourth swap
+	 * no more swaps.
 	 */
 	
 	TimerTask sorted1 = new TimerTask(){
@@ -401,7 +401,7 @@ public class bubbleAnimation extends JPanel {
 	
 	
 	/*******************************
-	 * end of fourth  swap
+	 * end of more swaps
 	 */
 	
     
