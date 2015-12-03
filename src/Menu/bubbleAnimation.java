@@ -27,13 +27,11 @@ public class bubbleAnimation extends JPanel {
     Timer t4 = new Timer();
 
  
-    
     int x=150;
     int x1=150;
     int x2=150;
     int x3=150;
-    int x4=150;
-    
+    int x4=150;   
     
     int y=100;
     int y1=100;
