@@ -56,8 +56,28 @@ public class InsertionAnimation extends JPanel {
 	    boolean sortedNode2;
 	    boolean sortedNode1;
 	    boolean sortedNode;
+	    
+	    boolean printText = false;
+	    boolean printText1 = false;
+	    boolean printText2 = false;
+	    boolean printText3 = false;
+	   
+	   
 
-
+	    String[] instructions = {"Insertion Sort Algorithm:",
+				
+	    		"The first unsorted element is inspected and placed ",
+				"logically as the head of a sorted array. ", 
+				
+				"Then next element is pulled from the unsorted array and compared to ",
+				"the last element in the sorted array.",
+				
+				"Working right to left these two element are compared",
+				" and swapped if the right is smaller.",
+				
+				"This continues until it finds its place in the sorted array.",
+				
+	    		"Repeat until all the elemnts are in the sorted array."};
 
 	    int timeInterval = 5;
 	    
@@ -150,6 +170,36 @@ public class InsertionAnimation extends JPanel {
 			g2.drawString("5", x4+17, y4+35);
 			g2.drawString("2", x5+67, y5+35);
 			
+			g2.drawString(instructions[0], 300, 200);
+			
+			Font font2 = new Font("Serif", Font.PLAIN, 18);
+			g2.setFont(font2);
+			
+			if(printText){
+				
+				g2.drawString(instructions[1], 300, 230);
+				g2.drawString(instructions[2], 300, 260);
+			}
+			
+			if(printText1){
+				
+				
+			}
+			
+			if(printText2){
+				
+				g2.drawString(instructions[3], 300, 290);
+				g2.drawString(instructions[4], 300, 320);
+				g2.drawString(instructions[5], 300, 350);
+				g2.drawString(instructions[6], 300, 380);
+			}
+			
+			if(printText3){
+				
+				g2.drawString(instructions[7], 300, 410);
+				g2.drawString(instructions[8], 300, 440);
+				
+			}
 		    
 		    repaint();
 		    
@@ -162,8 +212,12 @@ public class InsertionAnimation extends JPanel {
 		 * start of first swap
 		 */
 		
+		
 		TimerTask down = new TimerTask(){
+			
 			public void run(){
+				 printText = true;	
+				
 				
 				y1=y1+1;
 				y2=y2+1;
@@ -216,6 +270,8 @@ public class InsertionAnimation extends JPanel {
 		TimerTask down1 = new TimerTask(){
 			public void run(){
 				
+				printText2 = true;
+				
 				y3=y3+1;
 				y4=y4+1;
 				if(y4==300){
@@ -265,6 +321,8 @@ public class InsertionAnimation extends JPanel {
 		
 		TimerTask down2 = new TimerTask(){
 			public void run(){
+				
+				printText3 = true;
 				
 				y1=y1+1;
 				y4=y4+1;
@@ -569,7 +627,7 @@ public class InsertionAnimation extends JPanel {
 			JFrame f = new JFrame();
 			f.add(s);
 			f.setVisible(true);
-			f.setSize(450,600);
+			f.setSize(900,600);
 			f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			f.setLocationRelativeTo(null);
 		}

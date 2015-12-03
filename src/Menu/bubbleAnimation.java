@@ -28,12 +28,11 @@ public class bubbleAnimation extends JPanel {
 
 
     String[] instructions = {"Bubble Sort Algorithm:",
-    						
-    						"Compare the first two elements, since 5 > 1, then swap 5", //1
-    						"Then compare 5 and 4, and swap",//2
-    						"The process is repeated until the focus moves to the end of the array",//3
+    						"Compare the first two elements, since 5 > 1, then swap 5", 
+    						"Then compare 5 and 4, and swap",
+    						"The process is repeated until the focus moves to the end of the array",
     						"Keep doing this, while stopping at one earlier place each pass",
-    						"because the largest element is considered sorted at this time."};//4
+    						"because the largest element is considered sorted at this time."};
     
     int x=150;
     int x1=150;
