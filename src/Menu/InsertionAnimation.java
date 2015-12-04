@@ -6,8 +6,11 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Shape;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.geom.Ellipse2D;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -15,7 +18,7 @@ import javax.swing.JPanel;
 import java.util.*;
 
 
-public class InsertionAnimation extends JPanel {
+public class InsertionAnimation extends JPanel implements ActionListener {
 
 	// Java.util timer which operates by schedules.
 		Timer t = new Timer();
@@ -26,6 +29,8 @@ public class InsertionAnimation extends JPanel {
 	    Timer t5 = new Timer();
 	    Timer t6 = new Timer();
 	    Timer t7 = new Timer();
+	    Timer t8 = new Timer();
+	 
 
 	    
 	 
@@ -51,6 +56,7 @@ public class InsertionAnimation extends JPanel {
 
 	   
 	    int delay = 1000;
+	    boolean sortedNode5;
 	    boolean sortedNode4;
 	    boolean sortedNode3;
 	    boolean sortedNode2;
@@ -150,6 +156,32 @@ public class InsertionAnimation extends JPanel {
 			g2.drawString("5", x4+17, y4+35);
 			g2.drawString("2", x5+67, y5+35);
 			
+			if(sortedNode==true){
+				g2.setColor(Color.red);
+				g2.fill(ellipse);
+			}
+			if(sortedNode1==true){
+				g2.setColor(Color.red);
+				g2.fill(ellipse1);
+			}
+			if(sortedNode2==true){
+				g2.setColor(Color.red);
+				g2.fill(ellipse2);
+			}
+			if(sortedNode3==true){
+				g2.setColor(Color.red);
+				g2.fill(ellipse3);
+			}
+			if(sortedNode4==true){
+				g2.setColor(Color.red);
+				g2.fill(ellipse4);
+			}
+			if(sortedNode5==true){
+				g2.setColor(Color.red);
+				g2.fill(ellipse5);
+			}
+			
+			
 		    
 		    repaint();
 		    
@@ -164,7 +196,8 @@ public class InsertionAnimation extends JPanel {
 		
 		TimerTask down = new TimerTask(){
 			public void run(){
-				
+			    
+				sortedNode2=true;
 				y1=y1+1;
 				y2=y2+1;
 				if(y1==300){
@@ -216,12 +249,16 @@ public class InsertionAnimation extends JPanel {
 		TimerTask down1 = new TimerTask(){
 			public void run(){
 				
+				sortedNode2=false;
+				sortedNode4=true;
 				y3=y3+1;
 				y4=y4+1;
 				if(y4==300){
 					
 					y4=y4-1;
 					y3=y3-1;
+					
+
 				}
 			}
 		};
@@ -316,13 +353,15 @@ public class InsertionAnimation extends JPanel {
 		
 		TimerTask down3 = new TimerTask(){
 			public void run(){
-				
+				sortedNode5=true;
+				sortedNode4=false;
 				y3=y3+1;
 				y5=y5+1;
 				if(y3==300){
 					
 					y3=y3-1;
 					y5=y5-1;
+					
 				}
 			}
 		};
@@ -351,7 +390,6 @@ public class InsertionAnimation extends JPanel {
 					y3 = y3+1;
 					y5 = y5+1;	
 					t3.cancel();
-				    sortedNode=true;
 
 				}
 			}
@@ -551,6 +589,8 @@ public class InsertionAnimation extends JPanel {
 					t7.cancel();
 
 				}
+				sortedNode5=false;
+
 			}
 		};
 		
@@ -558,13 +598,16 @@ public class InsertionAnimation extends JPanel {
 		 * end of swap eight
 		 */
 	    
-
+	//@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			JButton button = new JButton();
+			this.add(button);
+		}
 		
-		
+	
 		public static void main(String[] args) {
-			
-		
-			
+						
 			InsertionAnimation s = new InsertionAnimation();
 			JFrame f = new JFrame();
 			f.add(s);
@@ -573,5 +616,9 @@ public class InsertionAnimation extends JPanel {
 			f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			f.setLocationRelativeTo(null);
 		}
+
+
+
+	
 
 }
