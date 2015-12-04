@@ -76,14 +76,14 @@ public class InsertionAnimation extends JPanel implements ActionListener {
 				"logically as the head of a sorted array. ", 
 				
 				"Then next element is pulled from the unsorted array and compared to ",
-				"the last element in the sorted array.",
+				"the first element in the sorted array.",
 				
 				"Working right to left these two element are compared",
 				" and swapped if the right is smaller.",
 				
 				"This continues until it finds its place in the sorted array.",
 				
-	    		"Repeat until all the elemnts are in the sorted array."};
+	    		"Repeat until all the elements are in the sorted array."};
 
 	    int timeInterval = 5;
 	    
@@ -93,7 +93,7 @@ public class InsertionAnimation extends JPanel implements ActionListener {
 	    	
 	    	//way to intantiate the animation. 
 	    	
-	    	
+	    
 	    	t.scheduleAtFixedRate(down, delay, timeInterval);
 	    	t.scheduleAtFixedRate(swap, delay*3, timeInterval);
 	    	t.scheduleAtFixedRate(up, delay*5, timeInterval);
@@ -126,8 +126,6 @@ public class InsertionAnimation extends JPanel implements ActionListener {
 	    	t7.scheduleAtFixedRate(swap7, delay*45, timeInterval);
 	    	t7.scheduleAtFixedRate(up7, delay*47, timeInterval);
 	    	
-
-
 	    	
 	    }
 	 
@@ -176,7 +174,7 @@ public class InsertionAnimation extends JPanel implements ActionListener {
 			g2.drawString("5", x4+17, y4+35);
 			g2.drawString("2", x5+67, y5+35);
 			
-<<<<<<< HEAD
+
 			if(sortedNode==true){
 				g2.setColor(Color.red);
 				g2.fill(ellipse);
@@ -203,7 +201,7 @@ public class InsertionAnimation extends JPanel implements ActionListener {
 			}
 			
 			
-=======
+
 			g2.drawString(instructions[0], 300, 200);
 			
 			Font font2 = new Font("Serif", Font.PLAIN, 18);
@@ -234,7 +232,6 @@ public class InsertionAnimation extends JPanel implements ActionListener {
 				g2.drawString(instructions[8], 300, 440);
 				
 			}
->>>>>>> 775469338947b8b945e8a3483754a78cb69e52d3
 		    
 		    repaint();
 		    
@@ -251,14 +248,13 @@ public class InsertionAnimation extends JPanel implements ActionListener {
 		TimerTask down = new TimerTask(){
 			
 			public void run(){
-<<<<<<< HEAD
-			    
+
+				
 				sortedNode2=true;
-=======
 				 printText = true;	
 				
 				
->>>>>>> 775469338947b8b945e8a3483754a78cb69e52d3
+
 				y1=y1+1;
 				y2=y2+1;
 				if(y1==300){
@@ -310,13 +306,10 @@ public class InsertionAnimation extends JPanel implements ActionListener {
 		TimerTask down1 = new TimerTask(){
 			public void run(){
 				
-<<<<<<< HEAD
 				sortedNode2=false;
 				sortedNode4=true;
-=======
 				printText2 = true;
 				
->>>>>>> 775469338947b8b945e8a3483754a78cb69e52d3
 				y3=y3+1;
 				y4=y4+1;
 				if(y4==300){
@@ -398,7 +391,7 @@ public class InsertionAnimation extends JPanel implements ActionListener {
 		TimerTask up2 = new TimerTask(){
 
 			public void run(){
-				
+			
 				y1 = y1-2;
 				y4 = y4-2;
 				if(y1<100){
