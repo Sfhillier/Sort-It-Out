@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.8" icons="true" always-add-relationships="true" generalizations="true" realizations="true" 
+  associations="true" dependencies="true" nesting-relationships="true">  
+  <class id="1" language="java" name="Menu.bubbleAnimation" project="SortItOut" 
+    file="/SortItOut/src/Menu/bubbleAnimation.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="386" width="199" x="60" y="-31"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="Menu.ISAnimationGUI" project="SortItOut" 
+    file="/SortItOut/src/Menu/ISAnimationGUI.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="134" width="146" x="299" y="-31"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="Menu.MainMenu" project="SortItOut" file="/SortItOut/src/Menu/MainMenu.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="242" width="261" x="485" y="-31"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="Menu.JavaApplication3" project="SortItOut" 
+    file="/SortItOut/src/Menu/JavaApplication3.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="98" width="143" x="786" y="-31"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="5" language="java" name="Menu.SortEvent" project="SortItOut" file="/SortItOut/src/Menu/SortEvent.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="98" width="137" x="969" y="-31"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="6" language="java" name="Menu.JavaApplication4" project="SortItOut" 
+    file="/SortItOut/src/Menu/JavaApplication4.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="98" width="143" x="1146" y="-31"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="Menu.SSAnimationGUI" project="SortItOut" 
+    file="/SortItOut/src/Menu/SSAnimationGUI.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="134" width="146" x="392" y="395"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="Menu.SortItOutMenu" project="SortItOut" 
+    file="/SortItOut/src/Menu/SortItOutMenu.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="98" width="125" x="1329" y="-31"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="Menu.BSAnimationGUI" project="SortItOut" 
+    file="/SortItOut/src/Menu/BSAnimationGUI.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="404" width="199" x="578" y="395"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <dependency id="10">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="9"/>  
+  </dependency>  
+  <dependency id="11">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="7"/>  
+  </dependency>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
