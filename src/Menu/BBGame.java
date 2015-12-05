@@ -1,4 +1,5 @@
 package Menu;
+
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -34,13 +35,13 @@ public class BBGame extends JPanel implements ActionListener {
 		    JTextField fourthNum;
 		    JTextField fifthNum;
 		    JLabel sortSign ;
-		    JLabel RandomNum1;
+		   JLabel RandomNum1;
 		    JLabel RandomNum2;
 		    JLabel RandomNum3;
 		    JLabel RandomNum4; 
 		    JLabel RandomNum5; 
 		    JTextArea answer;
-		static JLabel space = new JLabel("                    " );
+		static JLabel space = new JLabel(" " );
 	    private final JLabel sortedNum = new JLabel("sorted : ");
 	    private final JTextArea result = new JTextArea(" ");
 		private String sansarif;
@@ -52,12 +53,13 @@ public class BBGame extends JPanel implements ActionListener {
     	for(int i = 0;i< rNum.length;++i){
     		
     	rNum[i]= rand.nextInt(99)+1;
+    	
        	//rNum[1]= rand.nextInt(99)+1;
        //	rNum[2]= rand.nextInt(99)+1;
        //	rNum[3]= rand.nextInt(99)+1;
        //	rNum[4]= rand.nextInt(99)+1;
-    		}
-
+    		
+    	}
     	//add items to gui
         setLayout(new GridLayout(4, 1));
         JPanel game = new JPanel();
@@ -110,6 +112,7 @@ private final JPanel title(){
         p.setLayout(new BorderLayout());
         p.add(sortedNum, BorderLayout.WEST);
         p.add(result, BorderLayout.CENTER);
+        result.setEditable(false);
        // p.add(answer,BorderLayout.SOUTH);
         return p;
     }
@@ -147,6 +150,7 @@ private final JPanel title(){
     	int temp;
     	for(int i=0; i< rNum.length-1;){
     		for(int j = 1; j < rNum.length-i;j++ ){
+ 
     			if(rNum[j-1]>rNum[j]){
     			temp = rNum[j-1];
     			rNum[j-1] = rNum[j];
@@ -166,13 +170,12 @@ private final JPanel title(){
     
     private void resultLabel() {
     	for(int i = 0; i < arr.length; i++){
-    
 			if (rNum[i] == arr[i]){
-				result.append(rNum[i]+"\n");
+				result.append(rNum[i]+" ");
 			}
 			else
 				result.append("Try Again ");	
-		}
+		}result.append("\n");
 	}
     }
 
