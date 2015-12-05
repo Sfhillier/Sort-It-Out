@@ -1,5 +1,4 @@
 package Menu;
-
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -12,7 +11,6 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.Random;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -53,11 +51,11 @@ public class BBGame extends JPanel implements ActionListener {
     public BBGame() {
     	for(int i = 0;i< rNum.length;++i){
     		
-    	rNum[i]= rand.nextInt(100);
-       	//rNum[1]= rand.nextInt(100);
-       //	rNum[2]= rand.nextInt(100);
-       	//rNum[3]= rand.nextInt(100);
-       //	rNum[4]= rand.nextInt(100);
+    	rNum[i]= rand.nextInt(99)+1;
+       	//rNum[1]= rand.nextInt(99)+1;
+       //	rNum[2]= rand.nextInt(99)+1;
+       //	rNum[3]= rand.nextInt(99)+1;
+       //	rNum[4]= rand.nextInt(99)+1;
     		}
 
     	//add items to gui
@@ -147,14 +145,14 @@ private final JPanel title(){
     
     public void bubbleSort(){
     	int temp;
-    	for(int i=0; i< rNum.length-1;i++){
-    		for(int j =1; j < rNum.length-1;j++ ){
+    	for(int i=0; i< rNum.length-1;){
+    		for(int j = 1; j < rNum.length-i;j++ ){
     			if(rNum[j-1]>rNum[j]){
     			temp = rNum[j-1];
     			rNum[j-1] = rNum[j];
     			rNum[j]=temp;}			
-    		}System.out.print( Arrays.toString(rNum));
-    	}return ;
+    		}System.out.print( Arrays.toString(rNum)); break;
+    	}
     }
     
      public void inputNum(){
@@ -165,23 +163,11 @@ private final JPanel title(){
     	arr[3]= Integer.parseInt(fourthNum.getText());
     	arr[4]= Integer.parseInt(fifthNum.getText());
     	    }
-     
-  /*  public boolean isEqual(int[] array){
-    if(this.arr.length != rNum.length){return false;}
-      for(int index =0; index<arr.length; index++){
-    	  if(this.arr[index]!= rNum[index]){return false;}
-      }return true;
-    }*/
     
     private void resultLabel() {
-      /* answer.setText("");
-       for (int i =0; i< rNum.length;i++){
-			   answer.append(rNum[i]+"\n");
-            } 
-    }*/
     	for(int i = 0; i < arr.length; i++){
-
-			if (arr[i] == rNum[i]){
+    
+			if (rNum[i] == arr[i]){
 				result.append(rNum[i]+"\n");
 			}
 			else
