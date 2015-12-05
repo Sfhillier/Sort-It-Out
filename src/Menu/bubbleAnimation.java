@@ -5,19 +5,25 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.GridLayout;
 import java.awt.Shape;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.geom.Ellipse2D;
+import java.awt.geom.Rectangle2D;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 //import javax.swing.*;
 import java.util.*;
 
 @SuppressWarnings("serial")
-public class bubbleAnimation extends JPanel {
+public class bubbleAnimation extends JPanel implements MouseListener{
 
 // Java.util timer which operates by schedules.
     Timer t = new Timer();
@@ -57,12 +63,26 @@ public class bubbleAnimation extends JPanel {
     boolean printText1 = false;
     boolean printText2 = false;
     boolean printText3 = false;
+    
+    boolean notTranslate;
 
     int timeInterval = 5;
     
+    static JButton back = new JButton(" Back ");
+	static JButton skip = new JButton("Skip to Game");
+	static JFrame f = new JFrame();
+	static JPanel p = new JPanel();
+	
+	int translateX;
+	
     public  bubbleAnimation(){
 	
     	this.setBackground(Color.white); 
+    	addMouseListener(this);
+    	p.setLayout(new GridLayout());
+    	p.add(skip);
+    	p.add(back);
+    	this.add(p);
     	
     	//way to intantiate the animation. 
     	t.scheduleAtFixedRate(down, delay, timeInterval);
@@ -84,10 +104,22 @@ public class bubbleAnimation extends JPanel {
     	t4.scheduleAtFixedRate(sorted1, delay*24, timeInterval);
     	t4.scheduleAtFixedRate(sorted2, delay*25, timeInterval);
     	t4.scheduleAtFixedRate(sorted3, delay*26, timeInterval);
-
+    	
+    	
+    	
+    	if(notTranslate==true){
+    		translateX=50;
+    	}else{
+    		translateX=0;
+    	}
+    	
+    	this.skip();
+    	this.backToMenu();
     }
  
- 
+   
+	Shape rect = new Rectangle2D.Double(330,10,235,25);
+
 	public void paintComponent(Graphics g){
 		
 		super.paintComponent(g);
@@ -95,7 +127,7 @@ public class bubbleAnimation extends JPanel {
 	    
 	   
 	    // center the nodes.
-		g2.translate(50, 0);
+		g2.translate(translateX, 0);
 		
 		//create our nodes.
 		Shape ellipse = new Ellipse2D.Double(x-100, y, 50, 50);
@@ -104,13 +136,13 @@ public class bubbleAnimation extends JPanel {
 		Shape ellipse3 = new Ellipse2D.Double(x3+50, y3, 50, 50);
 		Shape ellipse4 = new Ellipse2D.Double(x4+100, y4, 50, 50);
 		
+		
 		g2.setColor(Color.lightGray);
 		g2.fill(ellipse);
 		g2.fill(ellipse1);
 		g2.fill(ellipse2);
 		g2.fill(ellipse3);
 		g2.fill(ellipse4);
-		
 		// set transparency
 		AlphaComposite ac = AlphaComposite.getInstance(AlphaComposite.DST_ATOP, 0.4f);
 		g2.setComposite(ac);
@@ -188,6 +220,8 @@ public class bubbleAnimation extends JPanel {
 			
 			
 			}
+		
+		
 			
 		
 	    repaint();
@@ -446,19 +480,92 @@ public class bubbleAnimation extends JPanel {
 	 * end of fourth  swap
 	 */
 	
-    
 
+	
+	public void skip(){
+	skip.addActionListener(
+            new ActionListener(){
+            	@Override
+                public void actionPerformed(ActionEvent e)
+                {
+                	f.dispose();
+                	BBGame b = new BBGame();
+            		JFrame f1 = new JFrame();
+            		f1.add(b);
+            		f1.setVisible(true);
+            		f1.setSize(900,600);
+            		f1.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            		f1.setLocationRelativeTo(null);
+
+
+                }
+            }
+        );
+	}
+	
+	public void backToMenu(){
+		back.addActionListener(
+	            new ActionListener(){
+	            	@Override
+	                public void actionPerformed(ActionEvent e)
+	                {
+	                	f.dispose();
+	                	Menu m = new Menu();
+	            		JFrame f1 = new JFrame();
+	            		f1.add(m);
+	            		f1.setVisible(true);
+	            		f1.setSize(900,600);
+	            		f1.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+	            		f1.setLocationRelativeTo(null);
+
+
+	                }
+	            }
+	        );
+		}
 	
 	
 	public static void main(String[] args) {
 		
 		bubbleAnimation s = new bubbleAnimation();
-		JFrame f = new JFrame();
 		f.add(s);
 		f.setVisible(true);
 		f.setSize(900,600);
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		f.setLocationRelativeTo(null);
+	}
+	//solves the translation problem.. the button actual 
+	//clicks for back and skip were disrupted by the g2.translation.
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		if(rect.contains(e.getPoint())){
+			notTranslate=true;
+		}
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

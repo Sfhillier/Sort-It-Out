@@ -1,4 +1,5 @@
-import org.eclipse.swt.widgets.Composite;
+package Menu;
+/*import org.eclipse.swt.widgets.Composite;
 import java.util.Random;
 import javax.swing.JTextArea;
 import org.eclipse.swt.SWT;
@@ -9,11 +10,11 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.wb.swt.SWTResourceManager;
 import org.eclipse.swt.widgets.Slider;
-
-public class Game extends Composite {
+*/
+public class Game {//extends Composite {
 	//private static int [] array =new int[10];
 	//array.random() 
-	
+/*	
 	private Text text;
 	private Text text_1;
 	private Text text_2;
@@ -59,7 +60,7 @@ public class Game extends Composite {
 	 * @param style
 	 */
 	// if sort is correct change color of text box green, if wrong turn red
-	public Game(Composite parent, int style) {
+	/*public Game(Composite parent, int style) {
 		super(parent, style);
 		
 		Integer[] numarray = new Integer[5];
@@ -256,5 +257,5 @@ public class Game extends Composite {
 	@Override
 	protected void checkSubclass() {
 		// Disable the check that prevents subclassing of SWT components
-	}
+	}*/
 }

@@ -23,11 +23,8 @@ public class SelectionAnimation extends JPanel {
 		    Timer t1 = new Timer();
 		    Timer t2 = new Timer();
 		    Timer t3 = new Timer();
-		   
-		 
 
 		    
-		 
 		    //x values of each nodes
 		    int x=150;
 		    int x1=150;
@@ -60,7 +57,7 @@ public class SelectionAnimation extends JPanel {
 		   
 		   
 
-		    String[] instructions = {"Insertion Sort Algorithm:",
+		    String[] instructions = {"Selection Sort Algorithm:",
 					
 		    		"The first unsorted element is inspected and placed ",
 					"logically as the head of a sorted array. ", 
