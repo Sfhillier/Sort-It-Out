@@ -18,6 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.SwingUtilities;
 
 //import javax.swing.*;
 import java.util.*;
@@ -68,23 +69,26 @@ public class bubbleAnimation extends JPanel implements MouseListener{
 
     int timeInterval = 5;
     
-    static JButton back = new JButton(" Back ");
 	static JButton skip = new JButton("Skip to Game");
 	static JFrame f = new JFrame();
-	static JPanel p = new JPanel();
+//	static JPanel p = new JPanel();
 	
 	int translateX;
+	
+	JButton start = new JButton("Start");
+	JButton stop = new JButton("stop");
+
 	
     public  bubbleAnimation(){
 	
     	this.setBackground(Color.white); 
     	addMouseListener(this);
-    	p.setLayout(new GridLayout());
-    	p.add(skip);
-    	p.add(back);
-    	this.add(p);
+    	//this.setLayout(new GridLayout());
+    	this.add(skip);
+    	this.add(start);
     	
     	//way to intantiate the animation. 
+    	/*
     	t.scheduleAtFixedRate(down, delay, timeInterval);
     	t.scheduleAtFixedRate(swap, delay*3, timeInterval);
     	t.scheduleAtFixedRate(up, delay*5, timeInterval);
@@ -105,16 +109,16 @@ public class bubbleAnimation extends JPanel implements MouseListener{
     	t4.scheduleAtFixedRate(sorted2, delay*25, timeInterval);
     	t4.scheduleAtFixedRate(sorted3, delay*26, timeInterval);
     	
-    	
+    	*/
     	
     	if(notTranslate==true){
     		translateX=50;
     	}else{
     		translateX=0;
     	}
-    	
+    
     	this.skip();
-    	this.backToMenu();
+    	this.start();
     }
  
    
@@ -266,7 +270,6 @@ public class bubbleAnimation extends JPanel implements MouseListener{
 	TimerTask up = new TimerTask(){
 
 		public void run(){
-			
 			
 			y = y-2;
 			y1 = y1-2;
@@ -480,7 +483,7 @@ public class bubbleAnimation extends JPanel implements MouseListener{
 	 * end of fourth  swap
 	 */
 	
-
+	
 	
 	public void skip(){
 	skip.addActionListener(
@@ -488,7 +491,6 @@ public class bubbleAnimation extends JPanel implements MouseListener{
             	@Override
                 public void actionPerformed(ActionEvent e)
                 {
-                	f.dispose();
                 	BBGame b = new BBGame();
             		JFrame f1 = new JFrame();
             		f1.add(b);
@@ -496,28 +498,37 @@ public class bubbleAnimation extends JPanel implements MouseListener{
             		f1.setSize(900,600);
             		f1.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             		f1.setLocationRelativeTo(null);
-
-
+                	//f.dispose();
                 }
             }
         );
 	}
 	
-	public void backToMenu(){
-		back.addActionListener(
+	public void start(){
+		start.addActionListener(
 	            new ActionListener(){
 	            	@Override
 	                public void actionPerformed(ActionEvent e)
 	                {
-	                	f.dispose();
-	                	Menu m = new Menu();
-	            		JFrame f1 = new JFrame();
-	            		f1.add(m);
-	            		f1.setVisible(true);
-	            		f1.setSize(900,600);
-	            		f1.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-	            		f1.setLocationRelativeTo(null);
-
+	            		t.scheduleAtFixedRate(down, delay, timeInterval);
+	                	t.scheduleAtFixedRate(swap, delay*3, timeInterval);
+	                	t.scheduleAtFixedRate(up, delay*5, timeInterval);
+	                	
+	                	t1.scheduleAtFixedRate(down1, delay*6, timeInterval);
+	                	t1.scheduleAtFixedRate(swap1, delay*9, timeInterval);
+	                	t1.scheduleAtFixedRate(up1, delay*11, timeInterval);
+	                	
+	                	t2.scheduleAtFixedRate(down2, delay*12, timeInterval);
+	                	t2.scheduleAtFixedRate(swap2, delay*15, timeInterval);
+	                	t2.scheduleAtFixedRate(up2, delay*17, timeInterval);
+	                	
+	                	t3.scheduleAtFixedRate(down3, delay*18, timeInterval);
+	                	t3.scheduleAtFixedRate(swap3, delay*21, timeInterval);
+	                	t3.scheduleAtFixedRate(up3, delay*23, timeInterval);
+	                	
+	                	t4.scheduleAtFixedRate(sorted1, delay*24, timeInterval);
+	                	t4.scheduleAtFixedRate(sorted2, delay*25, timeInterval);
+	                	t4.scheduleAtFixedRate(sorted3, delay*26, timeInterval);
 
 	                }
 	            }

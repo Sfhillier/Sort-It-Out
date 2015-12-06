@@ -7,28 +7,41 @@ import java.awt.event.ActionListener;
 import javax.swing.*; 
 
  
-public class Menu extends JPanel 
-{ 
+public class Menu extends JPanel { 
 	
 	JLabel label = new JLabel("Menu");
 	JLabel labelTwo = new JLabel ("Please select one of the following:");
-	JButton button1 = new JButton("Bubble Sort");
-	JButton button2 = new JButton("Insertion Sort");
-	JButton button3 = new JButton("Selection Sort");
-	static JFrame frame = new JFrame("Sort It Out!"); 
+	JToggleButton button1 = new JToggleButton("Bubble Sort");
+	JToggleButton button2 = new JToggleButton("Insertion Sort");
+	JToggleButton button3 = new JToggleButton("Selection Sort");
+	JButton back = new JButton("Back");
+	
+	static int index;
+	
+	static boolean button2IsPressed;
 
-	public static void main (String [] args){
-		Menu menu = new Menu();
-		 frame.setSize(400, 500);
-		 frame.add(menu);
-		// frame.pack(); 
-		 frame.setVisible(true); 
-		 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+
+	static JFrame frame = new JFrame("Sort It Out!"); 
+	static Menu menu = new Menu();
+	static bubbleAnimation B = new bubbleAnimation();
+	static SelectionAnimation S = new SelectionAnimation();
+	static InsertionAnimation I = new InsertionAnimation();
+
+
+	static Object[] panels = {menu,B,S,I};
+	
+	static //creates card layout
+	CardLayout cl = new CardLayout();
+	//panel to hold the others
+	static JPanel control = new JPanel();
+
+	
+	public static Object algorithms(int index) {
+		return panels[index];
 	}
 
 		public Menu() 
-		{ 
-			
+		{
 			
 			setLayout(new GridLayout(3,1));
 			JPanel one = new JPanel();
@@ -47,8 +60,7 @@ public class Menu extends JPanel
 			this.playBubble();
 			this.playInsertion();
 			this.playSelection();
-			
-			
+			this.goBack();
 			
 		}
 		public JPanel Mid(){
@@ -69,45 +81,44 @@ public class Menu extends JPanel
 				p.add(button3, null);
 				return p;
 			}
+		
+			
 			public void playBubble(){
 				button1.addActionListener(
 			            new ActionListener(){
 			            	@Override
 			                public void actionPerformed(ActionEvent e)
 			                {
-			                	frame.dispose();
-			                	bubbleAnimation b = new bubbleAnimation();
-			            		JFrame f1 = new JFrame();
-			            		f1.add(b);
-			            		f1.setVisible(true);
-			            		f1.setSize(900,600);
-			            		f1.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-			            		f1.setLocationRelativeTo(null);
-
+			            		
+			            		B.add(back);
+						    	cl.show(control, "bubble");
+				
+			               
 
 			                }
 			            }
 			        );
 				}
 			public void playInsertion(){
-				button2.addActionListener(
-			            new ActionListener(){
-			            	@Override
-			                public void actionPerformed(ActionEvent e)
-			                {
-			                	frame.dispose();
-			                	InsertionAnimation b = new InsertionAnimation();
-			            		JFrame f2 = new JFrame();
-			            		f2.add(b);
-			            		f2.setVisible(true);
-			            		f2.setSize(900,600);
-			            		f2.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-			            		f2.setLocationRelativeTo(null);
+				button2.addActionListener(new ActionListener() {
 
+				    @Override
+				    public void actionPerformed(ActionEvent e) {
+				        I.add(back);
+				    	cl.show(control, "insertion");
+				    	
+				    }
+				});
+				}
+			public void goBack(){
+				back.addActionListener(new ActionListener() {
 
-			                }
-			            }
-			        );
+				    @Override
+				    public void actionPerformed(ActionEvent e) {
+				    	cl.show(control, "menu");
+				    	
+				    }
+				});
 				}
 			public void playSelection(){
 				button3.addActionListener(
@@ -115,14 +126,8 @@ public class Menu extends JPanel
 			            	@Override
 			                public void actionPerformed(ActionEvent e)
 			                {
-			                	frame.dispose();
-			                	SelectionAnimation b = new SelectionAnimation();
-			            		JFrame f3 = new JFrame();
-			            		f3.add(b);
-			            		f3.setVisible(true);
-			            		f3.setSize(900,600);
-			            		f3.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-			            		f3.setLocationRelativeTo(null);
+			            	S.add(back);
+			            	cl.show(control, "selection");
 
 
 			                }
@@ -171,6 +176,23 @@ public class Menu extends JPanel
 			
 	        
 	   	this.add(one, BorderLayout.CENTER);*/
+public static void main (String [] args){
+		//Menu menu = new Menu();
+		
+		control.setLayout(cl);
+		control.add(menu, "menu");
+		control.add(I, "insertion");
+		control.add(B,"bubble");
+		control.add(S,"selection");
+
+		cl.show(control,"menu");
+		
+		frame.setSize(900, 600);
+		frame.add(control);
+		// frame.pack(); 
+		frame.setVisible(true); 
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); 
+	}
 
 		} 
 		

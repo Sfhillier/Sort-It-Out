@@ -5,10 +5,14 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.GridLayout;
 import java.awt.Shape;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.geom.Ellipse2D;
+import java.awt.geom.Rectangle2D;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -17,7 +21,7 @@ import javax.swing.JPanel;
 //import javax.swing.*;
 import java.util.*;
 
-public class SelectionAnimation extends JPanel {
+public class SelectionAnimation extends JPanel implements MouseListener {
 	// Java.util timer which operates by schedules.
 			Timer t = new Timer();
 		    Timer t1 = new Timer();
@@ -43,6 +47,8 @@ public class SelectionAnimation extends JPanel {
 
 		   
 		    int delay = 1000;
+		    
+		    //booleans to use for specify shadowing and some other cacpabilities.
 		    boolean sortedNode5;
 		    boolean sortedNode4;
 		    boolean sortedNode3;
@@ -55,20 +61,28 @@ public class SelectionAnimation extends JPanel {
 		    boolean printText2 = false;
 		    boolean printText3 = false;
 		   
-		   
+		    boolean notTranslate;
+
+
+		    static JButton back = new JButton(" Back ");
+			static JButton skip = new JButton("Skip to Game");
+			static JFrame f = new JFrame();
+			//static JPanel p = new JPanel();
+			
+			int translateX;
+
+			JButton start = new JButton("Start");
 
 		    String[] instructions = {"Selection Sort Algorithm:",
 					
-		    		"The first unsorted element is inspected and placed ",
-					"logically as the head of a sorted array. ", 
+		    		"Find the minimum value in the list",
+					"Swap the minimum value with the value in the first position ", 
 					
-					"Then next element is pulled from the unsorted array and compared to ",
-					"the first element in the sorted array.",
+					"We know that the first element is in its rightful (correct) position.",
 					
-					"Working right to left these two element are compared",
-					" and swapped if the right is smaller.",
 					
-					"This continues until it finds its place in the sorted array.",
+					"Repeat the steps for the remainder of the list",
+					"starting at the second position and advancing each time.",
 					
 		    		"Repeat until all the elements are in the sorted array."};
 
@@ -77,10 +91,13 @@ public class SelectionAnimation extends JPanel {
 		    public  SelectionAnimation() {
 			
 		    	this.setBackground(Color.white); 
-		    	
+		    	addMouseListener(this);
+		    //	p.setLayout(new GridLayout());
+		    	this.add(skip);
+		    	this.add(start);
 		    	//way to intantiate the animation. 
 		    	
-		    
+		    /*
 		    	t.scheduleAtFixedRate(down, delay, timeInterval);
 		    	t.scheduleAtFixedRate(swap, delay*3, timeInterval);
 		    	t.scheduleAtFixedRate(up, delay*5, timeInterval);
@@ -96,12 +113,21 @@ public class SelectionAnimation extends JPanel {
 		    	t3.scheduleAtFixedRate(sorted1, delay*18, timeInterval);
 		    	t3.scheduleAtFixedRate(sorted2, delay*21, timeInterval);
 		    	t3.scheduleAtFixedRate(sorted3, delay*23, timeInterval);
+		    	*/
 		    	
+		    	if(notTranslate==true){
+		    		translateX= 0;
+		    	}else{
+		    		translateX= 70;
+		    	}
 		    	
-		    	
+		    	this.skip();
+		    	this.start();
+
 		    }
 		 
 		 
+			Shape rect = new Rectangle2D.Double(330,10,235,25);
 
 			public void paintComponent(Graphics g){
 				
@@ -110,7 +136,7 @@ public class SelectionAnimation extends JPanel {
 			    
 			   
 			    // center the nodes.
-				g2.translate(70, 0);
+				g2.translate(translateX, 0);
 				
 				//create our nodes.
 				Shape ellipse = new Ellipse2D.Double(x-200, y, 50, 50);
@@ -177,28 +203,25 @@ public class SelectionAnimation extends JPanel {
 					
 					g2.drawString(instructions[1], 300, 230);
 					g2.drawString(instructions[2], 300, 260);
+					g2.drawString(instructions[3], 300, 290);
+					
 				}
 				
 				if(printText1){
 					
 					
+					g2.drawString(instructions[4], 300, 320);
+					g2.drawString(instructions[5], 300, 350);
+					
 				}
 				
 				if(printText2){
-					
-					g2.drawString(instructions[3], 300, 290);
-					g2.drawString(instructions[4], 300, 320);
-					g2.drawString(instructions[5], 300, 350);
 					g2.drawString(instructions[6], 300, 380);
+					g2.drawString(instructions[7], 300, 410);
+					
 				}
 				
-				if(printText3){
-					
-					g2.drawString(instructions[7], 300, 410);
-					g2.drawString(instructions[8], 300, 440);
-					
-				}
-			    
+				
 			    repaint();
 			    
 			    
@@ -267,7 +290,7 @@ public class SelectionAnimation extends JPanel {
 			
 			TimerTask down1 = new TimerTask(){
 				public void run(){
-				    
+					printText1 = true;
 					sortedNode4=true;
 					y1=y1+1;
 					y2=y2+1;
@@ -404,7 +427,52 @@ public class SelectionAnimation extends JPanel {
 			/*******************************
 			 * end of shadows
 			 */
-			
+			public void skip(){
+				skip.addActionListener(
+			            new ActionListener(){
+			            	@Override
+			                public void actionPerformed(ActionEvent e)
+			                {
+			                	BBGame b = new BBGame();
+			            		JFrame f1 = new JFrame();
+			            		f1.add(b);
+			            		f1.setVisible(true);
+			            		f1.setSize(900,600);
+			            		f1.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			            		f1.setLocationRelativeTo(null);
+			                	//f.dispose();
+			                }
+			            }
+			        );
+				}
+				
+				public void start(){
+					start.addActionListener(
+				            new ActionListener(){
+				            	@Override
+				                public void actionPerformed(ActionEvent e)
+				                {
+				            		t.scheduleAtFixedRate(down, delay, timeInterval);
+				    		    	t.scheduleAtFixedRate(swap, delay*3, timeInterval);
+				    		    	t.scheduleAtFixedRate(up, delay*5, timeInterval);
+				    		    	
+				    		    	t1.scheduleAtFixedRate(down1, delay*6, timeInterval);
+				    		    	t1.scheduleAtFixedRate(swap1, delay*9, timeInterval);
+				    		    	t1.scheduleAtFixedRate(up1, delay*11, timeInterval);
+				    		    	
+				    		    	t2.scheduleAtFixedRate(down2, delay*12, timeInterval);
+				    		    	t2.scheduleAtFixedRate(swap2, delay*15, timeInterval);
+				    		    	t2.scheduleAtFixedRate(up2, delay*17, timeInterval);
+				    		    	
+				    		    	t3.scheduleAtFixedRate(sorted1, delay*18, timeInterval);
+				    		    	t3.scheduleAtFixedRate(sorted2, delay*21, timeInterval);
+				    		    	t3.scheduleAtFixedRate(sorted3, delay*23, timeInterval);
+
+				                }
+				            }
+				        );
+					}
+				
 			
 		
 		    
@@ -429,8 +497,48 @@ public class SelectionAnimation extends JPanel {
 
 
 
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				if(rect.contains(e.getPoint())){
+					notTranslate=true;
+				}
+			}
+
+
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+
+
 		
 
 	}
-
-

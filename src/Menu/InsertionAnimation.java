@@ -8,7 +8,10 @@ import java.awt.Graphics2D;
 import java.awt.Shape;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.geom.Ellipse2D;
+import java.awt.geom.Rectangle2D;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -18,7 +21,7 @@ import javax.swing.JPanel;
 import java.util.*;
 
 
-public class InsertionAnimation extends JPanel implements ActionListener {
+public class InsertionAnimation extends JPanel implements ActionListener,MouseListener {
 
 	// Java.util timer which operates by schedules.
 		Timer t = new Timer();
@@ -31,7 +34,7 @@ public class InsertionAnimation extends JPanel implements ActionListener {
 	    Timer t7 = new Timer();
 	    Timer t8 = new Timer();
 	 
-
+	    
 	    
 	 
 	    //x values of each nodes
@@ -67,8 +70,12 @@ public class InsertionAnimation extends JPanel implements ActionListener {
 	    boolean printText1 = false;
 	    boolean printText2 = false;
 	    boolean printText3 = false;
-	   
-	   
+
+	    int translateX;
+	    boolean notTranslate;
+
+    	JButton start = new JButton("Start");
+
 
 	    String[] instructions = {"Insertion Sort Algorithm:",
 				
@@ -88,12 +95,15 @@ public class InsertionAnimation extends JPanel implements ActionListener {
 	    int timeInterval = 5;
 	    
 	    public  InsertionAnimation() {
-		
-	    	this.setBackground(Color.white); 
 	    	
+	    	this.setBackground(Color.white); 
+	    	this.add(start);
+	    	this.playSelection();
+	    	addMouseListener(this);
+
 	    	//way to intantiate the animation. 
 	    	
-	    
+	    /*
 	    	t.scheduleAtFixedRate(down, delay, timeInterval);
 	    	t.scheduleAtFixedRate(swap, delay*3, timeInterval);
 	    	t.scheduleAtFixedRate(up, delay*5, timeInterval);
@@ -125,11 +135,12 @@ public class InsertionAnimation extends JPanel implements ActionListener {
 	    	t7.scheduleAtFixedRate(down7, delay*42, timeInterval);
 	    	t7.scheduleAtFixedRate(swap7, delay*45, timeInterval);
 	    	t7.scheduleAtFixedRate(up7, delay*47, timeInterval);
-	    	
+	    	*/
 	    	
 	    }
 	 
 	 
+		Shape rect = new Rectangle2D.Double(330,10,235,25);
 
 		public void paintComponent(Graphics g){
 			
@@ -138,7 +149,7 @@ public class InsertionAnimation extends JPanel implements ActionListener {
 		    
 		   
 		    // center the nodes.
-			g2.translate(70, 0);
+			g2.translate(translateX, 0);
 			
 			//create our nodes.
 			Shape ellipse = new Ellipse2D.Double(x-200, y, 50, 50);
@@ -235,10 +246,15 @@ public class InsertionAnimation extends JPanel implements ActionListener {
 		    
 		    repaint();
 		    
-		    
+		    if(notTranslate==true){
+	    		translateX=70;
+	    	}else{
+	    		translateX=0;
+	    	}
 		}
 		
 	
+		
 		
 		/*******************************
 		 * start of first swap
@@ -251,7 +267,7 @@ public class InsertionAnimation extends JPanel implements ActionListener {
 
 				
 				sortedNode2=true;
-				 printText = true;	
+				printText = true;	
 				
 				
 
@@ -658,7 +674,50 @@ public class InsertionAnimation extends JPanel implements ActionListener {
 		/*******************************
 		 * end of swap eight
 		 */
-	    
+		
+		public void playSelection(){
+			start.addActionListener(
+		            new ActionListener(){
+		            	@Override
+		                public void actionPerformed(ActionEvent e)
+		                {
+
+		        	    	t.scheduleAtFixedRate(down, delay, timeInterval);
+		        	    	t.scheduleAtFixedRate(swap, delay*3, timeInterval);
+		        	    	t.scheduleAtFixedRate(up, delay*5, timeInterval);
+		        	    	
+		        	    	t1.scheduleAtFixedRate(down1, delay*6, timeInterval);
+		        	    	t1.scheduleAtFixedRate(swap1, delay*9, timeInterval);
+		        	    	t1.scheduleAtFixedRate(up1, delay*11, timeInterval);
+		        	    	
+		        	    	t2.scheduleAtFixedRate(down2, delay*12, timeInterval);
+		        	    	t2.scheduleAtFixedRate(swap2, delay*15, timeInterval);
+		        	    	t2.scheduleAtFixedRate(up2, delay*17, timeInterval);
+		        	    	
+		        	    	t3.scheduleAtFixedRate(down3, delay*18, timeInterval);
+		        	    	t3.scheduleAtFixedRate(swap3, delay*21, timeInterval);
+		        	    	t3.scheduleAtFixedRate(up3, delay*23, timeInterval);
+		        	    	
+		        	    	t4.scheduleAtFixedRate(down4, delay*24, timeInterval);
+		        	    	t4.scheduleAtFixedRate(swap4, delay*27, timeInterval);
+		        	    	t4.scheduleAtFixedRate(up4, delay*29, timeInterval);
+		        	    	
+		        	    	t5.scheduleAtFixedRate(down5, delay*30, timeInterval);
+		        	    	t5.scheduleAtFixedRate(swap5, delay*33, timeInterval);
+		        	    	t5.scheduleAtFixedRate(up5, delay*35, timeInterval);
+		        	    	
+		        	    	t6.scheduleAtFixedRate(down6, delay*36, timeInterval);
+		        	    	t6.scheduleAtFixedRate(swap6, delay*39, timeInterval);
+		        	    	t6.scheduleAtFixedRate(up6, delay*41, timeInterval);
+		        	    	
+		        	    	t7.scheduleAtFixedRate(down7, delay*42, timeInterval);
+		        	    	t7.scheduleAtFixedRate(swap7, delay*45, timeInterval);
+		        	    	t7.scheduleAtFixedRate(up7, delay*47, timeInterval);
+		                }
+		            }
+		        );
+			}
+		
 	//@Override
 		public void actionPerformed(ActionEvent e) {
 			
@@ -668,7 +727,7 @@ public class InsertionAnimation extends JPanel implements ActionListener {
 		
 	
 		public static void main(String[] args) {
-						
+			
 			InsertionAnimation s = new InsertionAnimation();
 			JFrame f = new JFrame();
 			f.add(s);
@@ -676,6 +735,48 @@ public class InsertionAnimation extends JPanel implements ActionListener {
 			f.setSize(900,600);
 			f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			f.setLocationRelativeTo(null);
+		}
+
+
+
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			// TODO Auto-generated method stub
+			if(rect.contains(e.getPoint())){
+				notTranslate=true;
+			}
+		}
+
+
+
+		@Override
+		public void mousePressed(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+
+
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
 		}
 
 
