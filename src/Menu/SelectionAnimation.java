@@ -48,7 +48,7 @@ public class SelectionAnimation extends JPanel implements MouseListener {
 		   
 		    int delay = 1000;
 		    
-		    //booleans to use for specify shadowing and some other cacpabilities.
+		    //booleans to use for specify shadowing and some other capabilities.
 		    boolean sortedNode5;
 		    boolean sortedNode4;
 		    boolean sortedNode3;
@@ -97,7 +97,7 @@ public class SelectionAnimation extends JPanel implements MouseListener {
 		    	this.add(start);
 		    	//way to intantiate the animation. 
 		    	
-		    /*
+		    
 		    	t.scheduleAtFixedRate(down, delay, timeInterval);
 		    	t.scheduleAtFixedRate(swap, delay*3, timeInterval);
 		    	t.scheduleAtFixedRate(up, delay*5, timeInterval);
@@ -113,7 +113,7 @@ public class SelectionAnimation extends JPanel implements MouseListener {
 		    	t3.scheduleAtFixedRate(sorted1, delay*18, timeInterval);
 		    	t3.scheduleAtFixedRate(sorted2, delay*21, timeInterval);
 		    	t3.scheduleAtFixedRate(sorted3, delay*23, timeInterval);
-		    	*/
+		    	
 		    	
 		    	if(notTranslate==true){
 		    		translateX= 0;
@@ -161,6 +161,7 @@ public class SelectionAnimation extends JPanel implements MouseListener {
 				
 				// draw transparent text
 				Font font = new Font("Serif", Font.BOLD, 30);
+				g2.setColor(Color.BLACK);
 				g2.setFont(font);
 				g2.drawString("9", x-183, y+35);
 				g2.drawString("7", x1-133, y1+35);
@@ -198,9 +199,9 @@ public class SelectionAnimation extends JPanel implements MouseListener {
 				
 				Font font2 = new Font("Serif", Font.PLAIN, 18);
 				g2.setFont(font2);
-				
+				g2.setColor(Color.black);
 				if(printText){
-					
+					g2.setColor(Color.black);
 					g2.drawString(instructions[1], 300, 230);
 					g2.drawString(instructions[2], 300, 260);
 					g2.drawString(instructions[3], 300, 290);
@@ -209,13 +210,14 @@ public class SelectionAnimation extends JPanel implements MouseListener {
 				
 				if(printText1){
 					
-					
+					g2.setColor(Color.black);
 					g2.drawString(instructions[4], 300, 320);
 					g2.drawString(instructions[5], 300, 350);
 					
 				}
 				
 				if(printText2){
+					g2.setColor(Color.black);
 					g2.drawString(instructions[6], 300, 380);
 					g2.drawString(instructions[7], 300, 410);
 					
