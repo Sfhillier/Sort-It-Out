@@ -144,6 +144,12 @@ public class BBGame extends JPanel implements ActionListener {
 		inputNum();
 		//isEqual();
 		resultLabel();
+		firstNum.setText("");
+		secondNum.setText("");
+		thirdNum.setText("");
+		fourthNum.setText("");
+		fifthNum.setText("");
+
 	}  
 
 	public void bubbleSort(){
