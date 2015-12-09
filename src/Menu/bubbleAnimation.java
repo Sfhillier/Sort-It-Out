@@ -76,7 +76,8 @@ public class bubbleAnimation extends JPanel implements MouseListener{
 	int translateX;
 	
 	JButton start = new JButton("Start");
-	JButton stop = new JButton("stop");
+	//JButton stop = new JButton("Stop");
+//	JButton resume = new JButton("Resume");
 
 	
     public  bubbleAnimation(){
@@ -86,7 +87,8 @@ public class bubbleAnimation extends JPanel implements MouseListener{
     	//this.setLayout(new GridLayout());
     	this.add(skip);
     	this.add(start);
-    	
+  //  	this.add(stop);
+   // 	this.add(resume);
     	//way to intantiate the animation. 
     	/*
     	t.scheduleAtFixedRate(down, delay, timeInterval);
@@ -119,6 +121,8 @@ public class bubbleAnimation extends JPanel implements MouseListener{
     
     	this.skip();
     	this.start();
+    	//this.stopAnimation();
+    	//this.resumeAnimation();
     }
  
    
@@ -482,9 +486,38 @@ public class bubbleAnimation extends JPanel implements MouseListener{
 	/*******************************
 	 * end of fourth  swap
 	 */
-	
-	
-	
+/*	
+	public void resumeAnimation(){
+		resume.addActionListener(
+	            new ActionListener(){
+	            	@Override
+	                public void actionPerformed(ActionEvent e)
+	                {
+						Thread.interrupted();
+						Thread.interrupted();
+
+						
+	                }
+	            }
+	        );
+		}
+	public void stopAnimation(){
+		stop.addActionListener(
+	            new ActionListener(){
+	            	@Override
+	                public void actionPerformed(ActionEvent e)
+	                {
+	                	try {
+							Thread.sleep(900000000);
+						} catch (InterruptedException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+	                }
+	            }
+	        );
+		}
+	*/
 	public void skip(){
 	skip.addActionListener(
             new ActionListener(){

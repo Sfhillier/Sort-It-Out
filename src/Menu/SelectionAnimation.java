@@ -30,11 +30,11 @@ public class SelectionAnimation extends JPanel implements MouseListener {
 
 		    
 		    //x values of each nodes
-		    int x=150;
-		    int x1=150;
-		    int x2=150;
-		    int x3=150;
-		    int x4=150;
+		    int x=250;
+		    int x1=250;
+		    int x2=250;
+		    int x3=250;
+		    int x4=250;
 		   
 
 		    //y value of each nodes
@@ -48,7 +48,7 @@ public class SelectionAnimation extends JPanel implements MouseListener {
 		   
 		    int delay = 1000;
 		    
-		    //booleans to use for specify shadowing and some other capabilities.
+		    //booleans to use for specify shadowing and some other cacpabilities.
 		    boolean sortedNode5;
 		    boolean sortedNode4;
 		    boolean sortedNode3;
@@ -63,8 +63,8 @@ public class SelectionAnimation extends JPanel implements MouseListener {
 		   
 		    boolean notTranslate;
 
+		    int timeInterval = 5;
 
-		    static JButton back = new JButton(" Back ");
 			static JButton skip = new JButton("Skip to Game");
 			static JFrame f = new JFrame();
 			//static JPanel p = new JPanel();
@@ -73,7 +73,7 @@ public class SelectionAnimation extends JPanel implements MouseListener {
 
 			JButton start = new JButton("Start");
 
-		    String[] instructions = {"Selection Sort Algorithm:",
+		    String[] instructions = {"      Selection Sort Algorithm:",
 					
 		    		"Find the minimum value in the list",
 					"Swap the minimum value with the value in the first position ", 
@@ -86,7 +86,6 @@ public class SelectionAnimation extends JPanel implements MouseListener {
 					
 		    		"Repeat until all the elements are in the sorted array."};
 
-		    int timeInterval = 5;
 		    
 		    public  SelectionAnimation() {
 			
@@ -97,28 +96,10 @@ public class SelectionAnimation extends JPanel implements MouseListener {
 		    	this.add(start);
 		    	//way to intantiate the animation. 
 		    	
-		    
-		    	t.scheduleAtFixedRate(down, delay, timeInterval);
-		    	t.scheduleAtFixedRate(swap, delay*3, timeInterval);
-		    	t.scheduleAtFixedRate(up, delay*5, timeInterval);
-		    	
-		    	t1.scheduleAtFixedRate(down1, delay*6, timeInterval);
-		    	t1.scheduleAtFixedRate(swap1, delay*9, timeInterval);
-		    	t1.scheduleAtFixedRate(up1, delay*11, timeInterval);
-		    	
-		    	t2.scheduleAtFixedRate(down2, delay*12, timeInterval);
-		    	t2.scheduleAtFixedRate(swap2, delay*15, timeInterval);
-		    	t2.scheduleAtFixedRate(up2, delay*17, timeInterval);
-		    	
-		    	t3.scheduleAtFixedRate(sorted1, delay*18, timeInterval);
-		    	t3.scheduleAtFixedRate(sorted2, delay*21, timeInterval);
-		    	t3.scheduleAtFixedRate(sorted3, delay*23, timeInterval);
-		    	
-		    	
 		    	if(notTranslate==true){
-		    		translateX= 0;
+		    		translateX=70;
 		    	}else{
-		    		translateX= 70;
+		    		translateX=0;
 		    	}
 		    	
 		    	this.skip();
@@ -137,6 +118,7 @@ public class SelectionAnimation extends JPanel implements MouseListener {
 			   
 			    // center the nodes.
 				g2.translate(translateX, 0);
+
 				
 				//create our nodes.
 				Shape ellipse = new Ellipse2D.Double(x-200, y, 50, 50);
@@ -151,9 +133,7 @@ public class SelectionAnimation extends JPanel implements MouseListener {
 				g2.fill(ellipse1);
 				g2.fill(ellipse2);
 				g2.fill(ellipse3);
-				g2.fill(ellipse4);				
-
-
+				g2.fill(ellipse4);	
 				
 				// set transparency
 				AlphaComposite ac = AlphaComposite.getInstance(AlphaComposite.DST_ATOP, 0.4f);
@@ -161,7 +141,6 @@ public class SelectionAnimation extends JPanel implements MouseListener {
 				
 				// draw transparent text
 				Font font = new Font("Serif", Font.BOLD, 30);
-				g2.setColor(Color.BLACK);
 				g2.setFont(font);
 				g2.drawString("9", x-183, y+35);
 				g2.drawString("7", x1-133, y1+35);
@@ -199,27 +178,26 @@ public class SelectionAnimation extends JPanel implements MouseListener {
 				
 				Font font2 = new Font("Serif", Font.PLAIN, 18);
 				g2.setFont(font2);
-				g2.setColor(Color.black);
+				
 				if(printText){
-					g2.setColor(Color.black);
-					g2.drawString(instructions[1], 300, 230);
-					g2.drawString(instructions[2], 300, 260);
-					g2.drawString(instructions[3], 300, 290);
+					
+					g2.drawString(instructions[1], 350, 230);
+					g2.drawString(instructions[2], 350, 260);
+					g2.drawString(instructions[3], 350, 290);
 					
 				}
 				
 				if(printText1){
 					
-					g2.setColor(Color.black);
-					g2.drawString(instructions[4], 300, 320);
-					g2.drawString(instructions[5], 300, 350);
+					
+					g2.drawString(instructions[4], 350, 320);
+					g2.drawString(instructions[5], 350, 350);
 					
 				}
 				
 				if(printText2){
-					g2.setColor(Color.black);
-					g2.drawString(instructions[6], 300, 380);
-					g2.drawString(instructions[7], 300, 410);
+					g2.drawString(instructions[6], 350, 380);
+					g2.drawString(instructions[7], 350, 410);
 					
 				}
 				
@@ -259,7 +237,7 @@ public class SelectionAnimation extends JPanel implements MouseListener {
 					
 					x = x+1;
 					x4= x4-1;
-					if(x4==-50){
+					if(x4==50){
 						x = x-1;
 						x4 = x4+1;	
 					}
@@ -313,7 +291,7 @@ public class SelectionAnimation extends JPanel implements MouseListener {
 					
 					x1 = x1+1;
 					x2 = x2-1;
-					if(x2==100){
+					if(x2==200){
 						x1 = x1-1;
 						x2 = x2+1;	
 					}
@@ -365,7 +343,7 @@ public class SelectionAnimation extends JPanel implements MouseListener {
 					
 					x1 = x1+1;
 					x3 = x3-1;
-					if(x3==100){
+					if(x3==199){
 						x1 = x1-1;
 						x3 = x3+1;	
 					}
@@ -474,16 +452,6 @@ public class SelectionAnimation extends JPanel implements MouseListener {
 				            }
 				        );
 					}
-				
-			
-		
-		    
-		//@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				JButton button = new JButton();
-				this.add(button);
-			}
 			
 		
 			public static void main(String[] args) {
@@ -495,6 +463,7 @@ public class SelectionAnimation extends JPanel implements MouseListener {
 				f.setSize(900,600);
 				f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				f.setLocationRelativeTo(null);
+
 			}
 
 
@@ -512,7 +481,7 @@ public class SelectionAnimation extends JPanel implements MouseListener {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
+
 			}
 
 
@@ -544,3 +513,4 @@ public class SelectionAnimation extends JPanel implements MouseListener {
 		
 
 	}
+

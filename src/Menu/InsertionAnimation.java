@@ -38,14 +38,14 @@ public class InsertionAnimation extends JPanel implements ActionListener,MouseLi
 	    
 	 
 	    //x values of each nodes
-	    int x=150;
-	    int x1=150;
-	    int x2=150;
-	    int x3=150;
-	    int x4=150;
-	    int x5=150;
-	    int x6=150;
-	    int x7=150;
+	    int x=250;
+	    int x1=250;
+	    int x2=250;
+	    int x3=250;
+	    int x4=250;
+	    int x5=250;
+	    int x6=250;
+	    int x7=250;
 
 	    //y value of each nodes
 	    int y=100;
@@ -149,7 +149,7 @@ public class InsertionAnimation extends JPanel implements ActionListener,MouseLi
 		    
 		   
 		    // center the nodes.
-			g2.translate(translateX, 0);
+			//g2.translate(translateX, 0);
 			
 			//create our nodes.
 			Shape ellipse = new Ellipse2D.Double(x-200, y, 50, 50);
@@ -213,15 +213,15 @@ public class InsertionAnimation extends JPanel implements ActionListener,MouseLi
 			
 			
 
-			g2.drawString(instructions[0], 300, 200);
+			g2.drawString(instructions[0], 390, 200);
 			
 			Font font2 = new Font("Serif", Font.PLAIN, 18);
 			g2.setFont(font2);
 			
 			if(printText){
 				
-				g2.drawString(instructions[1], 300, 230);
-				g2.drawString(instructions[2], 300, 260);
+				g2.drawString(instructions[1], 390, 230);
+				g2.drawString(instructions[2], 390, 260);
 			}
 			
 			if(printText1){
@@ -231,25 +231,25 @@ public class InsertionAnimation extends JPanel implements ActionListener,MouseLi
 			
 			if(printText2){
 				
-				g2.drawString(instructions[3], 300, 290);
-				g2.drawString(instructions[4], 300, 320);
-				g2.drawString(instructions[5], 300, 350);
-				g2.drawString(instructions[6], 300, 380);
+				g2.drawString(instructions[3], 390, 290);
+				g2.drawString(instructions[4], 390, 320);
+				g2.drawString(instructions[5], 390, 350);
+				g2.drawString(instructions[6], 390, 380);
 			}
 			
 			if(printText3){
 				
-				g2.drawString(instructions[7], 300, 410);
-				g2.drawString(instructions[8], 300, 440);
+				g2.drawString(instructions[7], 390, 410);
+				g2.drawString(instructions[8], 390, 440);
 				
 			}
 		    
 		    repaint();
 		    
 		    if(notTranslate==true){
-	    		translateX=70;
-	    	}else{
 	    		translateX=0;
+	    	}else{
+	    		translateX=70;
 	    	}
 		}
 		
@@ -288,7 +288,7 @@ public class InsertionAnimation extends JPanel implements ActionListener,MouseLi
 				
 				x1 = x1+1;
 				x2= x2-1;
-				if(x2==100){
+				if(x2==200){
 					x1 = x1-1;
 					x2 = x2+1;	
 				}
@@ -345,7 +345,7 @@ public class InsertionAnimation extends JPanel implements ActionListener,MouseLi
 				
 				x3 = x3+1;
 				x4 = x4-1;
-				if(x4==100){
+				if(x4==200){
 					x3 = x3-1;
 					x4 = x4+1;	
 				}
@@ -397,7 +397,7 @@ public class InsertionAnimation extends JPanel implements ActionListener,MouseLi
 				
 				x1 = x1+1;
 				x4 = x4-1;
-				if(x4==50){
+				if(x4==150){
 					x1 = x1-1;
 					x4 = x4+1;	
 				}
@@ -450,7 +450,7 @@ public class InsertionAnimation extends JPanel implements ActionListener,MouseLi
 				
 				x3 = x3+1;
 				x5 = x5-1;
-				if(x5==100){
+				if(x5==200){
 					x3 = x3-1;
 					x5 = x5+1;	
 				}
@@ -499,7 +499,7 @@ public class InsertionAnimation extends JPanel implements ActionListener,MouseLi
 				
 				x1 = x1+1;
 				x5 = x5-1;
-				if(x5==50){
+				if(x5==150){
 					x1 = x1-1;
 					x5 = x5+1;	
 				}
@@ -550,7 +550,7 @@ public class InsertionAnimation extends JPanel implements ActionListener,MouseLi
 				
 				x4 = x4+1;
 				x5 = x5-1;
-				if(x5==0){
+				if(x5==100){
 					x4 = x4-1;
 					x5 = x5+1;	
 				}
@@ -598,7 +598,7 @@ public class InsertionAnimation extends JPanel implements ActionListener,MouseLi
 				
 				x2 = x2+1;
 				x5 = x5-1;
-				if(x5==-50){
+				if(x5==50){
 					x2 = x2-1;
 					x5 = x5+1;	
 				}
@@ -647,7 +647,7 @@ public class InsertionAnimation extends JPanel implements ActionListener,MouseLi
 				
 				x = x+1;
 				x5 = x5-1;
-				if(x5==-100){
+				if(x5==0){
 					x = x-1;
 					x5 = x5+1;	
 				}
