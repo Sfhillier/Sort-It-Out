@@ -23,6 +23,9 @@ import javax.swing.JTextField;
 public class BBGame extends JPanel implements ActionListener {
 
 	//declare ints
+	int userIndex = 1;
+	int demoIndex = 1;
+	public boolean firstPass = true;
 	Random rand = new Random();
 	int[] rNum = new int[5];
 	int[] arr = new int[5];
@@ -65,6 +68,7 @@ public class BBGame extends JPanel implements ActionListener {
 		JPanel game = new JPanel();
 		game.setLayout(new FlowLayout(10));
 		sortSign = new JLabel("Sort these numbers: ");
+		
 
 		RandomNum1 = new JLabel(Integer.toString(rNum[0]));
 		RandomNum2= new JLabel(Integer.toString(rNum[1]));
@@ -140,28 +144,56 @@ public class BBGame extends JPanel implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		bubbleSort();
+		
+		// Runs the bubble sort method the first time regardless
+		if(firstPass == true){
+			bubbleSort(rNum, demoIndex);
+		}
+		// If not the first pass, it checks the two arrays for equality
+		else{
+			// If they're equal it will run another pass of both arrays through the loop
+			if(Arrays.equals(arr,  rNum)){
+				bubbleSort(arr, userIndex);
+				bubbleSort(rNum, demoIndex);
+				userIndex++;
+				demoIndex++;
+			}
+			else{
+				
+			}
+		}
+		firstPass = false;
+		
 		inputNum();
-		//isEqual();
+
+		// Checks for equality in the arrays and runs the next pass
+		// if they are equal
 		resultLabel();
+
+
+		// Resets the values of the text fields for the next step
 		firstNum.setText("");
 		secondNum.setText("");
 		thirdNum.setText("");
 		fourthNum.setText("");
 		fifthNum.setText("");
+		
+	/*	// Checks to see if the array has been properly sorted
+		if(checkForDone(rNum)){
+			result.append("Congratulations, you have sorted the array!");
+		}*/
+	}
 
-	}  
-
-	public void bubbleSort(){
+	public void bubbleSort(int[] array, int index){
 		int temp;
-		for(int i=0; i< rNum.length-1;){
-			for(int j = 1; j < rNum.length-i;j++ ){
+		for(int i = 0; i < index; i++){
+			for(int j = 1; j < array.length-i;j++ ){
 
-				if(rNum[j-1]>rNum[j]){
-					temp = rNum[j-1];
-					rNum[j-1] = rNum[j];
-					rNum[j]=temp;}			
-			}System.out.print( Arrays.toString(rNum)); break;
+				if(array[j-1]>array[j]){
+					temp = array[j-1];
+					array[j-1] = array[j];
+					array[j]=temp;}			
+			}
 		}
 	}
 
@@ -174,14 +206,34 @@ public class BBGame extends JPanel implements ActionListener {
 		arr[4]= Integer.parseInt(fifthNum.getText());
 	}
 
+	private boolean checkForDone(int[] array){
+		boolean isFinished = false;
+		for(int i = 0; i < array.length; i++){
+			// This condition runs until it gets to the second
+			// to last index, otherwise it will give an array out of
+			// bounds error
+			if(i+1 < array.length){
+				if(array[i]<=array[i+1]){
+					isFinished = true;
+				}
+				else if(array[i]>array[i+1]){
+					isFinished = false;
+				}
+			}
+		}
+		return isFinished;
+	}
+
 	private void resultLabel() {
 		for(int i = 0; i < arr.length; i++){
 			if (rNum[i] == arr[i]){
 				result.append(rNum[i]+" ");
 			}
-			else
-				result.append("Try Again ");	
-		}result.append("\n");
+			else{
+				result.append("Try Again ");
+			}
+		}
+		result.append("\n");
 	}
 }
 

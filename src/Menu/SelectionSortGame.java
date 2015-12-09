@@ -147,13 +147,13 @@ private final JPanel title(){
     	inputNum();
     	//isEqual();
     	resultLabel();
-		firstNum.setText("");
-		secondNum.setText("");
-		thirdNum.setText("");
-		fourthNum.setText("");
-		fifthNum.setText("");
-            }  
-    
+    	firstNum.setText("");
+    	secondNum.setText("");
+    	thirdNum.setText("");
+    	fourthNum.setText("");
+    	fifthNum.setText("");
+    }  
+
     public void selectionSort(){
     	int min;
     	int temp;
