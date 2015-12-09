@@ -191,7 +191,7 @@ public static void main (String [] args){
 		frame.add(control);
 		// frame.pack(); 
 		frame.setVisible(true); 
-		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); 
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
 	}
 
 		} 

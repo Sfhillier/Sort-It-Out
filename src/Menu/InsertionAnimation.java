@@ -98,8 +98,9 @@ public class InsertionAnimation extends JPanel implements ActionListener,MouseLi
 	    public  InsertionAnimation() {
 	    	
 	    	this.setBackground(Color.white); 
+	    	this.add(skip);
 	    	this.add(start);
-	    	this.playSelection();
+	    	
 	    	addMouseListener(this);
 
 	    	//way to intantiate the animation. 
@@ -137,7 +138,8 @@ public class InsertionAnimation extends JPanel implements ActionListener,MouseLi
 	    	t7.scheduleAtFixedRate(swap7, delay*45, timeInterval);
 	    	t7.scheduleAtFixedRate(up7, delay*47, timeInterval);
 	    	*/
-	    	
+	    	this.playSelection();
+	    	this.skip();
 	    }
 	 
 	 
