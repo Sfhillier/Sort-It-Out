@@ -152,7 +152,7 @@ private final JPanel title(){
     	thirdNum.setText("");
     	fourthNum.setText("");
     	fifthNum.setText("");
-    }  
+    		}  
 
     public void selectionSort(){
     	int min;
