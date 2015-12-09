@@ -26,6 +26,7 @@ public class BBGame extends JPanel implements ActionListener {
 	int userIndex = 1;
 	int demoIndex = 1;
 	public boolean firstPass = true;
+	boolean isSorted = false;
 	Random rand = new Random();
 	int[] rNum = new int[5];
 	int[] arr = new int[5];
@@ -170,18 +171,28 @@ public class BBGame extends JPanel implements ActionListener {
 		// if they are equal
 		resultLabel();
 
-
+		// Checks to see if the array has been properly sorted
+		// Once it sees one imperfection it stops
+		// If it makes it all the way though it will
+		// Congratulate the user
+		int checkIndex = 0;
+		while(checkIndex < arr.length-1){
+			if(arr[checkIndex]>arr[checkIndex+1]){
+				break;
+			}
+			checkIndex++;
+		}
+		// Prints out the message that the sort is done once the user has finished it
+		if(checkIndex == arr.length-1){
+			result.append("Congratulations, you have sorted the array!");
+		}
+		
 		// Resets the values of the text fields for the next step
 		firstNum.setText("");
 		secondNum.setText("");
 		thirdNum.setText("");
 		fourthNum.setText("");
 		fifthNum.setText("");
-		
-	/*	// Checks to see if the array has been properly sorted
-		if(checkForDone(rNum)){
-			result.append("Congratulations, you have sorted the array!");
-		}*/
 	}
 
 	public void bubbleSort(int[] array, int index){
@@ -206,23 +217,6 @@ public class BBGame extends JPanel implements ActionListener {
 		arr[4]= Integer.parseInt(fifthNum.getText());
 	}
 
-	private boolean checkForDone(int[] array){
-		boolean isFinished = false;
-		for(int i = 0; i < array.length; i++){
-			// This condition runs until it gets to the second
-			// to last index, otherwise it will give an array out of
-			// bounds error
-			if(i+1 < array.length){
-				if(array[i]<=array[i+1]){
-					isFinished = true;
-				}
-				else if(array[i]>array[i+1]){
-					isFinished = false;
-				}
-			}
-		}
-		return isFinished;
-	}
 
 	private void resultLabel() {
 		for(int i = 0; i < arr.length; i++){
