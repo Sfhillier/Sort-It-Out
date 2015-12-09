@@ -11,7 +11,10 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.Random;
+import java.util.Set;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -35,7 +38,7 @@ public class InsertionSortGame extends JPanel implements ActionListener {
 		    JTextField fourthNum;
 		    JTextField fifthNum;
 		    JLabel sortSign ;
-		   JLabel RandomNum1;
+		    JLabel RandomNum1;
 		    JLabel RandomNum2;
 		    JLabel RandomNum3;
 		    JLabel RandomNum4; 
@@ -45,21 +48,17 @@ public class InsertionSortGame extends JPanel implements ActionListener {
 	    private final JLabel sortedNum = new JLabel("sorted : ");
 	    private final JTextArea result = new JTextArea(" ");
 	    private static final Dimension TEXT_INPUT_DIM = new Dimension(50, 30);
-	   // private static final Dimension TEXT_OUTPUT_DIM = new Dimension(20, 50);
-
 	    
     public InsertionSortGame() {
-    	for(int i = 0;i< rNum.length;++i){
-    		
-    	rNum[i]= rand.nextInt(99)+1;
-    	
-       	//rNum[1]= rand.nextInt(99)+1;
-       //	rNum[2]= rand.nextInt(99)+1;
-       //	rNum[3]= rand.nextInt(99)+1;
-       //	rNum[4]= rand.nextInt(99)+1;
-    		
-    	}
-    	//add items to gui
+    	 
+    	 Set<Integer> set = new LinkedHashSet<>();
+    	   while(set.size()<rNum.length){
+    		   set.add(rand.nextInt(99)+1);
+    	   }
+    	   int pos =0;
+    	   for (Integer v: set){
+    		   rNum[pos++]=v;
+    	   }//add items to gui
         setLayout(new GridLayout(4, 1));
         JPanel game = new JPanel();
         game.setLayout(new FlowLayout(10));
@@ -141,25 +140,28 @@ private final JPanel title(){
     public void actionPerformed(ActionEvent e) {
     	insertionSort();
     	inputNum();
-    	//isEqual();
     	resultLabel();
-		firstNum.setText("");
+    	firstNum.setText("");
 		secondNum.setText("");
 		thirdNum.setText("");
 		fourthNum.setText("");
 		fifthNum.setText("");
+
             }  
     
     public void insertionSort(){
-    	int temp;
-    	for(int i=1; i< rNum.length;i++){
-    		for(int j = i; j > 0; j-- ){
-    			if(rNum[j]<rNum[j-1]){
-    			temp=rNum[j];
-    			rNum[j] = rNum[j-1];
-    			rNum[j-1]=temp;}	
-    		}
-    	}	System.out.print( Arrays.toString(rNum));	
+    	//http://stackoverflow.com/questions/31968697/how-to-sort-an-array-in-a-single-loop
+    	 for(int i = 1 ; i < rNum.length ;){
+    	        if(rNum[i] < rNum[i-1]){
+    	            int temp = rNum[i];
+    	            rNum[i] = rNum[i -1];
+    	            rNum[i -1] = temp;
+    	            i--; break;
+    	        } else{i++;}
+    	    }System.out.print(Arrays.toString(rNum)); 
+    	    return;
+    	
+    
     }
     	
    

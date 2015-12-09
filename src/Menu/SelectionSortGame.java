@@ -1,6 +1,5 @@
+
 package Menu;
-
-
 
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -13,8 +12,9 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.Random;
-
+import java.util.Set;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -38,7 +38,7 @@ public class SelectionSortGame extends JPanel implements ActionListener {
 		    JTextField fourthNum;
 		    JTextField fifthNum;
 		    JLabel sortSign ;
-		   JLabel RandomNum1;
+		    JLabel RandomNum1;
 		    JLabel RandomNum2;
 		    JLabel RandomNum3;
 		    JLabel RandomNum4; 
@@ -47,22 +47,17 @@ public class SelectionSortGame extends JPanel implements ActionListener {
 		static JLabel space = new JLabel(" " );
 	    private final JLabel sortedNum = new JLabel("sorted : ");
 	    private final JTextArea result = new JTextArea(" ");
-		private String sansarif;
 	    private static final Dimension TEXT_INPUT_DIM = new Dimension(50, 30);
-	   // private static final Dimension TEXT_OUTPUT_DIM = new Dimension(20, 50);
-
 	    
     public SelectionSortGame() {
-    	for(int i = 0;i< rNum.length;++i){
-    		
-    	rNum[i]= rand.nextInt(99)+1;
-    	
-       	//rNum[1]= rand.nextInt(99)+1;
-       //	rNum[2]= rand.nextInt(99)+1;
-       //	rNum[3]= rand.nextInt(99)+1;
-       //	rNum[4]= rand.nextInt(99)+1;
-    		
-    	}
+    	Set<Integer> set = new LinkedHashSet<>();
+ 	   while(set.size()<rNum.length){
+ 		   set.add(rand.nextInt(99)+1);
+ 	   }
+ 	   int pos =0;
+ 	   for (Integer v: set){
+ 		   rNum[pos++]=v;
+ 	   }
     	//add items to gui
         setLayout(new GridLayout(4, 1));
         JPanel game = new JPanel();
@@ -74,7 +69,7 @@ public class SelectionSortGame extends JPanel implements ActionListener {
 	    RandomNum3= new JLabel(Integer.toString(rNum[2]));
 	    RandomNum4= new JLabel(Integer.toString(rNum[3])); 
 	    RandomNum5= new JLabel(Integer.toString(rNum[4])); 
-        firstNum = new JTextField();
+        firstNum = new JTextField("");
         firstNum.setPreferredSize(TEXT_INPUT_DIM);
         secondNum = new JTextField("");
         secondNum.setPreferredSize(TEXT_INPUT_DIM);
@@ -145,31 +140,26 @@ private final JPanel title(){
     public void actionPerformed(ActionEvent e) {
     	selectionSort();
     	inputNum();
-    	//isEqual();
     	resultLabel();
     	firstNum.setText("");
-    	secondNum.setText("");
-    	thirdNum.setText("");
-    	fourthNum.setText("");
-    	fifthNum.setText("");
-    		}  
+		secondNum.setText("");
+		thirdNum.setText("");
+		fourthNum.setText("");
+		fifthNum.setText("");
 
+            }  
+    
     public void selectionSort(){
-    	int min;
+    
     	int temp;
     for (int i = 0;i < rNum.length-1;i++){
-    	min=i;
     	for (int j = i+1; j < rNum.length;j++){
-    		if(rNum[j]<rNum[min]){
-    			min=j;}
-    	}
-    		if(min!=i){
+    		if(rNum[j]<rNum[i]){
     		 temp = rNum[i];
-    		rNum[i] = rNum[min];
-    		rNum[min] = temp;
-    			}
-    			}System.out.print(Arrays.toString(rNum));	
-
+    		rNum[i] = rNum[j];
+    		rNum[j] = temp;
+    		}
+    	}System.out.print(Arrays.toString(rNum));     			}	
     	    		    }
     
      public void inputNum(){
