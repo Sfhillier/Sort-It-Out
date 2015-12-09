@@ -26,7 +26,7 @@ public class BBGame extends JPanel implements ActionListener {
 	int userIndex = 1;
 	int demoIndex = 1;
 	public boolean firstPass = true;
-	boolean isSorted = false;
+    boolean isSorted = false;
 	Random rand = new Random();
 	int[] rNum = new int[5];
 	int[] arr = new int[5];
@@ -170,7 +170,7 @@ public class BBGame extends JPanel implements ActionListener {
 		// Checks for equality in the arrays and runs the next pass
 		// if they are equal
 		resultLabel();
-
+		
 		// Checks to see if the array has been properly sorted
 		// Once it sees one imperfection it stops
 		// If it makes it all the way though it will
@@ -186,13 +186,16 @@ public class BBGame extends JPanel implements ActionListener {
 		if(checkIndex == arr.length-1){
 			result.append("Congratulations, you have sorted the array!");
 		}
-		
+
+
 		// Resets the values of the text fields for the next step
 		firstNum.setText("");
 		secondNum.setText("");
 		thirdNum.setText("");
 		fourthNum.setText("");
 		fifthNum.setText("");
+		
+	
 	}
 
 	public void bubbleSort(int[] array, int index){

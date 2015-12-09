@@ -413,9 +413,9 @@ public class SelectionAnimation extends JPanel implements MouseListener {
 			            	@Override
 			                public void actionPerformed(ActionEvent e)
 			                {
-			                	BBGame b = new BBGame();
+			            		SelectionSortGame sGame = new SelectionSortGame();
 			            		JFrame f1 = new JFrame();
-			            		f1.add(b);
+			            		f1.add(sGame);
 			            		f1.setVisible(true);
 			            		f1.setSize(900,600);
 			            		f1.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

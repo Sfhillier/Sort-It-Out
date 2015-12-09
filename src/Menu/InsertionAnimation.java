@@ -75,6 +75,7 @@ public class InsertionAnimation extends JPanel implements ActionListener,MouseLi
 	    boolean notTranslate;
 
     	JButton start = new JButton("Start");
+    	JButton skip = new JButton(" Go to Game ");
 
 
 	    String[] instructions = {"Insertion Sort Algorithm:",
@@ -675,6 +676,24 @@ public class InsertionAnimation extends JPanel implements ActionListener,MouseLi
 		 * end of swap eight
 		 */
 		
+		public void skip(){
+			skip.addActionListener(
+		            new ActionListener(){
+		            	@Override
+		                public void actionPerformed(ActionEvent e)
+		                {
+		            		InsertionSortGame IGame = new InsertionSortGame();
+		            		JFrame f1 = new JFrame();
+		            		f1.add(IGame);
+		            		f1.setVisible(true);
+		            		f1.setSize(900,600);
+		            		f1.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		            		f1.setLocationRelativeTo(null);
+		                	//f.dispose();
+		                }
+		            }
+		        );
+			}
 		public void playSelection(){
 			start.addActionListener(
 		            new ActionListener(){
