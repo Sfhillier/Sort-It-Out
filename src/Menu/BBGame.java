@@ -11,7 +11,10 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.Random;
+import java.util.Set;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -30,7 +33,6 @@ public class BBGame extends JPanel implements ActionListener {
 	Random rand = new Random();
 	int[] rNum = new int[5];
 	int[] arr = new int[5];
-	//private static final String Empty = "Empty";
 	JLabel RandomNum;
 	JLabel bubbleSort;
 	JTextField firstNum;
@@ -54,14 +56,13 @@ public class BBGame extends JPanel implements ActionListener {
 
 
 	public BBGame() {
-		for(int i = 0;i< rNum.length;++i){
-
-			rNum[i]= rand.nextInt(99)+1;
-
-			//rNum[1]= rand.nextInt(99)+1;
-			//	rNum[2]= rand.nextInt(99)+1;
-			//	rNum[3]= rand.nextInt(99)+1;
-			//	rNum[4]= rand.nextInt(99)+1;
+    	Set<Integer> set = new LinkedHashSet<>();
+ 	   while(set.size()<rNum.length){
+ 		   set.add(rand.nextInt(99)+1);
+ 	   }
+ 	   int pos =0;
+ 	   for (Integer v: set){
+ 		   rNum[pos++]=v;
 
 		}
 		//add items to gui
@@ -158,9 +159,6 @@ public class BBGame extends JPanel implements ActionListener {
 				bubbleSort(rNum, demoIndex);
 				userIndex++;
 				demoIndex++;
-			}
-			else{
-				
 			}
 		}
 		firstPass = false;
