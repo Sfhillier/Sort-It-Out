@@ -203,7 +203,8 @@ public class InsertionSortGame extends JPanel implements ActionListener {
 				array[i -1] = temp;
 				i--; break;
 			} else{i++;}
-		}System.out.print(Arrays.toString(rNum)); 
+		}
+		System.out.print(Arrays.toString(rNum)); 
 		return;
 	}
 
