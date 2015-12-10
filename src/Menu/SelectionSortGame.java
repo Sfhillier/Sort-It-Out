@@ -26,6 +26,10 @@ import javax.swing.JTextField;
 public class SelectionSortGame extends JPanel implements ActionListener {
   
    //declare ints
+	int userIndex = 1;
+	int demoIndex = 1;
+	public boolean firstPass = true;
+	boolean isSorted = false;
 	    Random rand = new Random();
 		 int[] rNum = new int[5];
 		 int[] arr = new int[5];
@@ -138,28 +142,66 @@ private final JPanel title(){
   
     @Override
     public void actionPerformed(ActionEvent e) {
-    	selectionSort();
-    	inputNum();
-    	resultLabel();
-    	firstNum.setText("");
-		secondNum.setText("");
-		thirdNum.setText("");
-		fourthNum.setText("");
-		fifthNum.setText("");
+    	// Runs the selection sort method the first time regardless
+    			if(firstPass == true){
+    				selectionSort(rNum, demoIndex);
+    			}
+    			// If not the first pass, it checks the two arrays for equality
+    			else{
+    				// If they're equal it will run another pass of both arrays through the loop
+    				if(Arrays.equals(arr,  rNum)){
+    					selectionSort(arr, userIndex);
+    					selectionSort(rNum, demoIndex);
+    					userIndex++;
+    					demoIndex++;
+    				}
+    				else{
+    					
+    				}
+    			}
+    			firstPass = false;
+    			
+    			inputNum();
 
+    			// Checks for equality in the arrays and runs the next pass
+    			// if they are equal
+    			resultLabel();
+
+    			// Checks to see if the array has been properly sorted
+    			// Once it sees one imperfection it stops
+    			// If it makes it all the way though it will
+    			// Congratulate the user
+    			int checkIndex = 0;
+    			while(checkIndex < arr.length-1){
+    				if(arr[checkIndex]>arr[checkIndex+1]){
+    					break;
+    				}
+    				checkIndex++;
+    			}
+    			// Prints out the message that the sort is done once the user has finished it
+    			if(checkIndex == arr.length-1){
+    				result.append("Congratulations, you have sorted the array!");
+    			}
+    			
+    			// Resets the values of the text fields for the next step
+    			firstNum.setText("");
+    			secondNum.setText("");
+    			thirdNum.setText("");
+    			fourthNum.setText("");
+    			fifthNum.setText("");
             }  
     
-    public void selectionSort(){
+    public void selectionSort(int[] array, int index){
     
     	int temp;
-    for (int i = 0;i < rNum.length-1;i++){
-    	for (int j = i+1; j < rNum.length;j++){
-    		if(rNum[j]<rNum[i]){
-    		 temp = rNum[i];
-    		rNum[i] = rNum[j];
-    		rNum[j] = temp;
+    for (int i = 0;i < index-1; i++){
+    	for (int j = i+1; j < array.length;j++){
+    		if(array[j]<array[i]){
+    		 temp = array[i];
+    		array[i] = array[j];
+    		array[j] = temp;
     		}
-    	}System.out.print(Arrays.toString(rNum));     			}	
+    	}System.out.print(Arrays.toString(array));     			}	
     	    		    }
     
      public void inputNum(){
