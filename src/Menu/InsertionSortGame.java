@@ -210,6 +210,27 @@ public class InsertionSortGame extends JPanel implements ActionListener {
 
 	public void inputNum(){
 
+	    if(firstNum.getText().length()>=3)
+	    {
+	        firstNum.setText(firstNum.getText().substring(0, 2));
+	    }
+	    if(secondNum.getText().length()>=3)
+	    {
+	        secondNum.setText(secondNum.getText().substring(0, 4));
+	    }
+	    if(thirdNum.getText().length()>=3)
+	    {
+	        thirdNum.setText(thirdNum.getText().substring(0, 2));
+	    }
+	    if(fourthNum.getText().length()>=3)
+	    {
+	        fourthNum.setText(fourthNum.getText().substring(0, 4));
+	    }
+	    if(fifthNum.getText().length()>=3)
+	    {
+	        fifthNum.setText(fifthNum.getText().substring(0, 2));
+	    }
+	    
 		arr[0]= Integer.parseInt(firstNum.getText());
 		arr[1]= Integer.parseInt(secondNum.getText());
 		arr[2]= Integer.parseInt(thirdNum.getText());
