@@ -14,6 +14,7 @@ import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Random;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -211,25 +212,64 @@ public class BBGame extends JPanel implements ActionListener {
 
 	public void inputNum(){
 		
-	    if(firstNum.getText().length()>=3)
+		// Manual data validation
+		// This section checks for any invalid data and then either
+		// manipulates the data to get a two digit integer
+		// or just enters a 100 so that it doesn't mess up the sort
+		// if the input doesn't match the regular expression 0-9.  
+		// The reason I used this instead of instant data validation 
+		// is because the method does other things after the button press, 
+		// but before it parses the input
+	    String regExpression = "[0-9]";
+		if(firstNum.getText().length()>=3)
 	    {
 	        firstNum.setText(firstNum.getText().substring(0, 2));
+	    }
+	    else if(firstNum.getText().isEmpty()){
+	    	firstNum.setText("100");
+	    }
+	    else if(!firstNum.getText().matches(regExpression)){
+	    	firstNum.setText("100");
 	    }
 	    if(secondNum.getText().length()>=3)
 	    {
 	        secondNum.setText(secondNum.getText().substring(0, 4));
 	    }
+	    else if(secondNum.getText().isEmpty()){
+	    	secondNum.setText("100");
+	    }
+	    else if(!secondNum.getText().matches(regExpression)){
+	    	secondNum.setText("100");
+	    }
 	    if(thirdNum.getText().length()>=3)
 	    {
 	        thirdNum.setText(thirdNum.getText().substring(0, 2));
+	    }
+	    else if(thirdNum.getText().isEmpty()){
+	    	thirdNum.setText("100");
+	    }
+	    else if(!thirdNum.getText().matches(regExpression)){
+	    	thirdNum.setText("100");
 	    }
 	    if(fourthNum.getText().length()>=3)
 	    {
 	        fourthNum.setText(fourthNum.getText().substring(0, 4));
 	    }
+	    else if(fourthNum.getText().isEmpty()){
+	    	fourthNum.setText("100");
+	    }
+	    else if(!fourthNum.getText().matches(regExpression)){
+	    	fourthNum.setText("100");
+	    }
 	    if(fifthNum.getText().length()>=3)
 	    {
 	        fifthNum.setText(fifthNum.getText().substring(0, 2));
+	    }
+	    else if(fifthNum.getText().isEmpty()){
+	    	fifthNum.setText("100");
+	    }
+	    else if(!fifthNum.getText().matches(regExpression)){
+	    	fifthNum.setText("100");
 	    }
 
 		arr[0]= Integer.parseInt(firstNum.getText());
