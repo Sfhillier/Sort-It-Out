@@ -218,7 +218,7 @@ public class InsertionSortGame extends JPanel implements ActionListener {
 		// The reason I used this instead of instant data validation 
 		// is because the method does other things after the button press, 
 		// but before it parses the input
-	    String regExpression = "[0-9]";
+	    String regExpression = "(\\d{0,2})";
 		if(firstNum.getText().length()>=3)
 	    {
 	        firstNum.setText(firstNum.getText().substring(0, 2));
