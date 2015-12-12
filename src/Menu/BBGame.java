@@ -90,7 +90,7 @@ public class BBGame extends JPanel implements ActionListener {
 		fifthNum.setPreferredSize(TEXT_INPUT_DIM);
 		bubbleSort = new JLabel("Bubble Sort");
 		bubbleSort.setFont(bubbleSort.getFont().deriveFont(24f));
-		// game.add(RandomNum);
+
 		game.add(firstNum);
 		game.add(secondNum);
 		game.add(thirdNum);
@@ -120,7 +120,6 @@ public class BBGame extends JPanel implements ActionListener {
 		p.add(sortedNum, BorderLayout.WEST);
 		p.add(result, BorderLayout.CENTER);
 		result.setEditable(false);
-		// p.add(answer,BorderLayout.SOUTH);
 		return p;
 	}
 
@@ -176,7 +175,7 @@ public class BBGame extends JPanel implements ActionListener {
 		// Congratulate the user
 		int checkIndex = 0;
 		while(checkIndex < arr.length-1){
-			if(arr[checkIndex]>arr[checkIndex+1]){
+			if((arr[checkIndex]>arr[checkIndex+1]) || (arr[checkIndex]>=100)){
 				break;
 			}
 			checkIndex++;

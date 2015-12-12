@@ -172,7 +172,7 @@ public class SelectionSortGame extends JPanel implements ActionListener {
 		// If it makes it all the way though it will
 		// Congratulate the user
 		int checkIndex = 0;
-		while(checkIndex < arr.length-1){
+		while((checkIndex < arr.length-1) || (arr[checkIndex]>=100)){
 			
 			if(arr[checkIndex]>arr[checkIndex+1]){
 				

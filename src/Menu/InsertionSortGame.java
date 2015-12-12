@@ -4,12 +4,9 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Random;
@@ -18,16 +15,16 @@ import java.util.Set;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+@SuppressWarnings("serial")
 public class InsertionSortGame extends JPanel implements ActionListener {
 
 	//declare ints
-	int userIndex = 1;
-	int demoIndex = 1;
+	int userIndex = 0;
+	int demoIndex = 0;
 	public boolean firstPass = true;
 	boolean isSorted = false;
 	Random rand = new Random();
@@ -169,7 +166,7 @@ public class InsertionSortGame extends JPanel implements ActionListener {
 		// If it makes it all the way though it will
 		// Congratulate the user
 		int checkIndex = 0;
-		while(checkIndex < arr.length-1){
+		while((checkIndex < arr.length-1) || (arr[checkIndex]>=100)){
 			// This condition is to check the last index since checkIndex+1 would produce 
 			// an out of bounds exception
 			if(checkIndex+1 == arr.length && arr[checkIndex-1]<arr[checkIndex]){
@@ -197,7 +194,18 @@ public class InsertionSortGame extends JPanel implements ActionListener {
 	public void insertionSort(int[] array, int index){
 		//http://stackoverflow.com/questions/31968697/how-to-sort-an-array-in-a-single-loop
 		for(int i = index ; i < array.length ;){
-			if(array[i] < array[i-1]){
+			if(index == 0){
+				if(array[i]>array[i+1]){
+
+					int temp = array[i];
+					array[i]=array[i+1];
+					array[i+1]=temp;
+				}
+				else{
+					break;
+				}
+			}
+			else if(array[i] < array[i-1]){
 				int temp = array[i];
 				array[i] = array[i -1];
 				array[i -1] = temp;
@@ -218,58 +226,58 @@ public class InsertionSortGame extends JPanel implements ActionListener {
 		// The reason I used this instead of instant data validation 
 		// is because the method does other things after the button press, 
 		// but before it parses the input
-	    String regExpression = "(\\d{0,2})";
+		String regExpression = "(\\d{0,2})";
 		if(firstNum.getText().length()>=3)
-	    {
-	        firstNum.setText(firstNum.getText().substring(0, 2));
-	    }
-	    else if(firstNum.getText().isEmpty()){
-	    	firstNum.setText("100");
-	    }
-	    else if(!firstNum.getText().matches(regExpression)){
-	    	firstNum.setText("100");
-	    }
-	    if(secondNum.getText().length()>=3)
-	    {
-	        secondNum.setText(secondNum.getText().substring(0, 4));
-	    }
-	    else if(secondNum.getText().isEmpty()){
-	    	secondNum.setText("100");
-	    }
-	    else if(!secondNum.getText().matches(regExpression)){
-	    	secondNum.setText("100");
-	    }
-	    if(thirdNum.getText().length()>=3)
-	    {
-	        thirdNum.setText(thirdNum.getText().substring(0, 2));
-	    }
-	    else if(thirdNum.getText().isEmpty()){
-	    	thirdNum.setText("100");
-	    }
-	    else if(!thirdNum.getText().matches(regExpression)){
-	    	thirdNum.setText("100");
-	    }
-	    if(fourthNum.getText().length()>=3)
-	    {
-	        fourthNum.setText(fourthNum.getText().substring(0, 4));
-	    }
-	    else if(fourthNum.getText().isEmpty()){
-	    	fourthNum.setText("100");
-	    }
-	    else if(!fourthNum.getText().matches(regExpression)){
-	    	fourthNum.setText("100");
-	    }
-	    if(fifthNum.getText().length()>=3)
-	    {
-	        fifthNum.setText(fifthNum.getText().substring(0, 2));
-	    }
-	    else if(fifthNum.getText().isEmpty()){
-	    	fifthNum.setText("100");
-	    }
-	    else if(!fifthNum.getText().matches(regExpression)){
-	    	fifthNum.setText("100");
-	    }
-	    
+		{
+			firstNum.setText(firstNum.getText().substring(0, 2));
+		}
+		else if(firstNum.getText().isEmpty()){
+			firstNum.setText("100");
+		}
+		else if(!firstNum.getText().matches(regExpression)){
+			firstNum.setText("100");
+		}
+		if(secondNum.getText().length()>=3)
+		{
+			secondNum.setText(secondNum.getText().substring(0, 4));
+		}
+		else if(secondNum.getText().isEmpty()){
+			secondNum.setText("100");
+		}
+		else if(!secondNum.getText().matches(regExpression)){
+			secondNum.setText("100");
+		}
+		if(thirdNum.getText().length()>=3)
+		{
+			thirdNum.setText(thirdNum.getText().substring(0, 2));
+		}
+		else if(thirdNum.getText().isEmpty()){
+			thirdNum.setText("100");
+		}
+		else if(!thirdNum.getText().matches(regExpression)){
+			thirdNum.setText("100");
+		}
+		if(fourthNum.getText().length()>=3)
+		{
+			fourthNum.setText(fourthNum.getText().substring(0, 4));
+		}
+		else if(fourthNum.getText().isEmpty()){
+			fourthNum.setText("100");
+		}
+		else if(!fourthNum.getText().matches(regExpression)){
+			fourthNum.setText("100");
+		}
+		if(fifthNum.getText().length()>=3)
+		{
+			fifthNum.setText(fifthNum.getText().substring(0, 2));
+		}
+		else if(fifthNum.getText().isEmpty()){
+			fifthNum.setText("100");
+		}
+		else if(!fifthNum.getText().matches(regExpression)){
+			fifthNum.setText("100");
+		}
+
 		arr[0]= Integer.parseInt(firstNum.getText());
 		arr[1]= Integer.parseInt(secondNum.getText());
 		arr[2]= Integer.parseInt(thirdNum.getText());
